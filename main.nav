@@ -3,13 +3,35 @@
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\sectionentry {1}{Random graphs}{3}{Random graphs}{0}}
+\headcommand {\sectionentry {1}{Background}{3}{Background}{0}}
 \headcommand {\beamer@sectionpages {1}{2}}
 \headcommand {\beamer@subsectionpages {1}{2}}
-\headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Temporal networks}}\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\slideentry {1}{1}{1}{3/3}{Temporal networks}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\beamer@partpages {1}{3}}
-\headcommand {\beamer@subsectionpages {3}{3}}
-\headcommand {\beamer@sectionpages {3}{3}}
-\headcommand {\beamer@documentpages {3}}
-\headcommand {\def \inserttotalframenumber {3}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Asymptotic properties}}\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\slideentry {1}{2}{1}{4/4}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{2}{2}{5/6}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {5}{6}}
+\headcommand {\slideentry {1}{2}{3}{7/8}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {7}{8}}
+\headcommand {\slideentry {1}{2}{4}{9/10}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {9}{10}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{11}{Empirical study}}\headcommand {\beamer@subsectionpages {4}{10}}
+\headcommand {\slideentry {1}{3}{1}{11/11}{Empirical study}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@subsectionentry {0}{1}{4}{12}{Models}}\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\slideentry {1}{4}{1}{12/12}{Models}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {1}{4}{2}{13/13}{Models}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {1}{4}{3}{14/14}{Models}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {1}{4}{4}{15/15}{Models}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\beamer@partpages {1}{15}}
+\headcommand {\beamer@subsectionpages {12}{15}}
+\headcommand {\beamer@sectionpages {3}{15}}
+\headcommand {\beamer@documentpages {15}}
+\headcommand {\def \inserttotalframenumber {12}}

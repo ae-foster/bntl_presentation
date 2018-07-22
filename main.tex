@@ -1,3 +1,6 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Setup I6pd2 style, common packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[final,hyperref={pdfpagelabels=false},noamsthm]{beamer}
 \usepackage{default}
 
@@ -7,8 +10,57 @@
 
 \usepackage{amsmath,amsthm}
 
-%\usepackage[document]{ragged2e}
-%\usepackage{multicol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shortcuts for this project
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% blackboard series
+\def\bbP{\mathbb{P}}
+\def\bbp{\mathbb{p}}
+\def\bbE{\mathbb{E}}
+\def\bbN{\mathbb{N}}
+
+% calligraphic series
+\def\calT{\mathcal{T}}
+\def\calW{\mathcal{W}}
+\def\calX{\mathcal{X}}
+
+% bold series
+\def\bfP{\mathbf{P}}
+\def\bfX{\mathbf{X}}
+
+% distributions
+\def\aDist{\Lambda}
+\def\aTime{T}
+\def\Geom{\text{Geom}}
+
+% stuff
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\ee}{Z} % ends of edges
+\newcommand{\bfee}{\mathbf{\ee}}
+\newcommand{\bfE}{\mathbf{E}}
+\newcommand{\PYP}{\mathcal{PYP}}
+\newcommand{\geom}{\beta}
+\newcommand{\BNTL}{\text{\rm BNTL}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bfPsi}{\boldsymbol{\Psi}}
+\newcommand{\bfn}{\mathbf{n}}
+\newcommand{\bfd}{\mathbf{d}}
+\newcommand{\argdot}{{\,\vcenter{\hbox{\scalebox{0.5}{$\bullet$}}}\,}}%{\bullet}
+\def\indicator{\mathbf{1}}
+\newcommand{\limscale}[2]{\overset{\scriptscriptstyle{#1 \uparrow #2}}{\widesim[1.25]}}
+\newcommand{\simiid}{\overset{\scriptscriptstyle{\text{i.i.d.}}}{\widesim}}
+\newcommand{\widesim}[1][1.5]{
+	\mathrel{\scalebox{#1}[1]{$\sim$}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define footer contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\leftfoot}{} % Left footer text
 
@@ -19,6 +71,10 @@
 
 \author{Benjamin Bloem-Reddy, \underline{Adam Foster}, Emile Mathieu, Yee Whye Teh }
 \institute{Department of Statistics, University of Oxford}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main presentation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 	
@@ -31,7 +87,8 @@
 	\tableofcontents
 \end{frame}
 
-\section{Random graphs}
+\section{Background}
+\subsection{Temporal networks}
 
 \begin{frame}
 	\frametitle{Temporal networks}
@@ -43,5 +100,126 @@
 \end{frame}
 
 
+\subsection{Asymptotic properties}
+\begin{frame}
+	\frametitle{Sparsity}
+	\begin{itemize}
+		\item For a complete graph, $K_n = O(n^{1/2})$
+		\item For a sparse graph,
+		\begin{equation}
+			K_n = O(n^{1/(1+\sigma)})
+		\end{equation}
+		for $0 \le \sigma < 1$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Power law degree distribution}
+	A power law distribution of exponent $\eta$ on $\{1, 2, ...\}$ has
+	\begin{equation}
+	p(d) = C_\eta d^{-\eta} 
+	\end{equation}
+	where $\eta > 1$.
+	
+	\pause
+	The asymptotic degree distribution has \textbf{power law tail with exponent} $\eta > 1$ if
+	\begin{align} 
+	\label{eq:plaw}
+	\frac{m_{n}(d)}{K_n} \xrightarrow[n\to\infty]{p} L(d)d^{-\eta} \;,
+	\end{align}
+	for slowly varying function $L(d)$.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Power laws and sparsity}
+	We have
+	\begin{align}
+		K_n &= \sum_{d=1}^\infty m_n(d), \\
+		n &= \sum_{d=1}^\infty d\, m_n(d).
+	\end{align}
+	Suppose (somewhat informally) that
+	\begin{equation}
+		K_n = C_{n, \eta} \sum_{d=1}^n d^{-\eta}
+	\end{equation}
+	\pause
+	then 
+	\begin{equation}	
+	n = C_{n, \eta} \sum_{d=1}^n d^{-\eta + 1} = K_n \, \frac{\sum_{d=1}^n d^{-\eta + 1}}{\sum_{d=1}^n d^{-\eta}}
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Power laws and sparsity}
+	Letting $n\to \infty$ in
+	\begin{equation}
+		\frac{K_n}{n} = \frac{\sum_{d=1}^n d^{-\eta}}{\sum_{d=1}^n d^{-\eta + 1}}
+	\end{equation}
+	we see $K_n = O(n)$ if $\eta > 2$, $K_n = o(n)$ if $\eta \in (1, 2]$.
+	\vspace{40pt}
+	\pause
+	
+	\textbf{Summary}
+	
+	For sparse graphs, $\sigma=0 \leftrightarrow \eta > 2$ and $\sigma > 0 \leftrightarrow \eta \in (1,2]$.
+\end{frame}
+
+\subsection{Empirical study}
+\begin{frame}
+	\frametitle{Empirical study}
+	SNAP dataset
+	Todo insert lots of pictures
+	
+\end{frame}
+
+\subsection{Models}
+\begin{frame}
+	\frametitle{Edge exchangeable models}
+	``The probability of all orderings of history are the same''
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pitman-Yor Process}
+	Parameters $\tau \in (0, 1), \theta > -\tau$.
+	\vspace{15pt}
+	
+	Arrivals
+	\begin{align}
+		\bbP(T_{j+1} - T_j > t \mid T_j) = \prod_{i=1}^{t} \frac{T_j + t - j \tau}{T_j + t + \theta}
+	\end{align}
+	Size-biased reinforcement
+	\begin{align} 
+	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
+	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
+	j &\text{ w.p.} \propto (d_{j,n} - \tau) && \text{otherwise} 
+	\end{aligned}\end{cases}
+	\label{eq:pyp}
+	\end{align}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sparsity and power law properties of edge-exchangeable models}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Yule-Simon Process}
+	Parameter $\beta \in (0, 1)$.
+	\vspace{15pt}
+	
+	Arrivals
+	\begin{align}
+	T_{j+1} - T_{j} \simiid \text{Geom}\left( \beta \right)
+	\end{align}
+	Size-biased reinforcement
+	\begin{align} 
+	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
+	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
+	j &\text{ w.p.} \propto d_{j,n} && \text{otherwise} 
+	\end{aligned}\end{cases}
+	\label{eq:ys}
+	\end{align}
+\end{frame}
 
 \end{document}
