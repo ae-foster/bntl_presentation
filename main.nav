@@ -9,29 +9,79 @@
 \headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Temporal networks}}\headcommand {\beamer@subsectionpages {3}{2}}
 \headcommand {\slideentry {1}{1}{1}{3/3}{Temporal networks}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Asymptotic properties}}\headcommand {\beamer@subsectionpages {3}{3}}
-\headcommand {\slideentry {1}{2}{1}{4/4}{Asymptotic properties}{0}}
+\headcommand {\slideentry {1}{1}{2}{4/4}{Temporal networks}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\slideentry {1}{2}{2}{5/6}{Asymptotic properties}{0}}
-\headcommand {\beamer@framepages {5}{6}}
-\headcommand {\slideentry {1}{2}{3}{7/8}{Asymptotic properties}{0}}
-\headcommand {\beamer@framepages {7}{8}}
-\headcommand {\slideentry {1}{2}{4}{9/10}{Asymptotic properties}{0}}
-\headcommand {\beamer@framepages {9}{10}}
-\headcommand {\beamer@subsectionentry {0}{1}{3}{11}{Empirical study}}\headcommand {\beamer@subsectionpages {4}{10}}
-\headcommand {\slideentry {1}{3}{1}{11/11}{Empirical study}{0}}
-\headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsectionentry {0}{1}{4}{12}{Models}}\headcommand {\beamer@subsectionpages {11}{11}}
-\headcommand {\slideentry {1}{4}{1}{12/12}{Models}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {1}{4}{2}{13/13}{Models}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {1}{4}{3}{14/14}{Models}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {1}{4}{4}{15/15}{Models}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@partpages {1}{15}}
-\headcommand {\beamer@subsectionpages {12}{15}}
-\headcommand {\beamer@sectionpages {3}{15}}
-\headcommand {\beamer@documentpages {15}}
-\headcommand {\def \inserttotalframenumber {12}}
+\headcommand {\slideentry {1}{1}{3}{5/5}{Temporal networks}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\slideentry {1}{1}{4}{6/6}{Temporal networks}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\slideentry {1}{1}{5}{7/7}{Temporal networks}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\slideentry {1}{1}{6}{8/8}{Temporal networks}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{9}{Asymptotic properties}}\headcommand {\beamer@subsectionpages {3}{8}}
+\headcommand {\slideentry {1}{2}{1}{9/9}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {1}{2}{2}{10/11}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {10}{11}}
+\headcommand {\slideentry {1}{2}{3}{12/13}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {12}{13}}
+\headcommand {\slideentry {1}{2}{4}{14/15}{Asymptotic properties}{0}}
+\headcommand {\beamer@framepages {14}{15}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{16}{Empirical study}}\headcommand {\beamer@subsectionpages {9}{15}}
+\headcommand {\slideentry {1}{3}{1}{16/16}{Empirical study}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\beamer@subsectionentry {0}{1}{4}{17}{Empirical study}}\headcommand {\beamer@subsectionpages {16}{16}}
+\headcommand {\slideentry {1}{4}{1}{17/17}{Empirical study}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {1}{4}{2}{18/18}{Empirical study}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\slideentry {1}{4}{3}{19/19}{Empirical study}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {1}{4}{4}{20/20}{Empirical study}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {1}{4}{5}{21/21}{Empirical study}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\beamer@subsectionentry {0}{1}{5}{22}{Models}}\headcommand {\beamer@subsectionpages {17}{21}}
+\headcommand {\slideentry {1}{5}{1}{22/22}{Models}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {1}{5}{2}{23/23}{Models}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {1}{5}{3}{24/24}{Models}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {1}{5}{4}{25/25}{Models}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\slideentry {1}{5}{5}{26/26}{Models}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {1}{5}{6}{27/27}{Models}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\slideentry {1}{5}{7}{28/28}{Models}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\slideentry {1}{5}{8}{29/29}{Models}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\slideentry {1}{5}{9}{30/30}{Models}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\slideentry {1}{5}{10}{31/31}{Models}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\sectionentry {2}{Inference}{32}{Inference}{0}}
+\headcommand {\beamer@sectionpages {3}{31}}
+\headcommand {\beamer@subsectionpages {22}{31}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{32}{Preliminaries}}\headcommand {\beamer@subsectionpages {32}{31}}
+\headcommand {\slideentry {2}{1}{1}{32/32}{Preliminaries}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{33}{Gibbs sampler}}\headcommand {\beamer@subsectionpages {32}{32}}
+\headcommand {\slideentry {2}{2}{1}{33/33}{Gibbs sampler}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\slideentry {2}{2}{2}{34/34}{Gibbs sampler}{0}}
+\headcommand {\beamer@framepages {34}{34}}
+\headcommand {\slideentry {2}{2}{3}{35/35}{Gibbs sampler}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\slideentry {2}{2}{4}{36/36}{Gibbs sampler}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\slideentry {2}{2}{5}{37/37}{Gibbs sampler}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\beamer@partpages {1}{37}}
+\headcommand {\beamer@subsectionpages {33}{37}}
+\headcommand {\beamer@sectionpages {32}{37}}
+\headcommand {\beamer@documentpages {37}}
+\headcommand {\def \inserttotalframenumber {34}}
