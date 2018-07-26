@@ -78,10 +78,16 @@
 \headcommand {\beamer@framepages {35}{35}}
 \headcommand {\slideentry {2}{2}{4}{36/36}{Gibbs sampler}{0}}
 \headcommand {\beamer@framepages {36}{36}}
-\headcommand {\slideentry {2}{2}{5}{37/37}{Gibbs sampler}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{37}{Point estimation}}\headcommand {\beamer@subsectionpages {33}{36}}
+\headcommand {\slideentry {2}{3}{1}{37/37}{Point estimation}{0}}
 \headcommand {\beamer@framepages {37}{37}}
-\headcommand {\beamer@partpages {1}{37}}
-\headcommand {\beamer@subsectionpages {33}{37}}
+\headcommand {\sectionentry {3}{Experiments}{38}{Experiments}{0}}
 \headcommand {\beamer@sectionpages {32}{37}}
-\headcommand {\beamer@documentpages {37}}
-\headcommand {\def \inserttotalframenumber {34}}
+\headcommand {\beamer@subsectionpages {37}{37}}
+\headcommand {\slideentry {3}{0}{1}{38/38}{}{0}}
+\headcommand {\beamer@framepages {38}{38}}
+\headcommand {\beamer@partpages {1}{38}}
+\headcommand {\beamer@subsectionpages {38}{38}}
+\headcommand {\beamer@sectionpages {38}{38}}
+\headcommand {\beamer@documentpages {38}}
+\headcommand {\def \inserttotalframenumber {35}}

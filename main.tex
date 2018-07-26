@@ -581,6 +581,8 @@ where
 	\bar{d}_{j,n} = \sum_{i=1}^j d_{j,n}.
 \end{equation*}
 
+Talk more about degree being suff stats -- insert $p(d, \Psi)$
+
 \begin{itemize}
 	\item For fixed $\alpha$, we have a closed form posterior
 	\item Learning other variables, we have a closed form Gibbs update
@@ -594,7 +596,6 @@ where
 		\item Left with one-dimensional unnormalized density for $\alpha$ and MCMC is applicable
 		\item For $\phi$, depends on $\Lambda_\phi$. Our experiments used conjugacy or slice sampling.
 	\end{itemize}
-	
 
 \end{frame}
 
@@ -618,10 +619,16 @@ where
 	Ratio of joints from ...
 \end{frame}
 
+\subsection{Point estimation}
 \begin{frame}
 	\frametitle{Point estimation}
-	Factorization $p_{\alpha, \phi}(\bfee_n) = p_\alpha (\bfee_n | \bfT_{K_n})\Lambda_\phi(\bfT_{K_n})$ aids MLE/MAP
+	Factorization $p_{\alpha, \phi}(\bfee_n) = p_\alpha (\bfee_n | \bfT_{K_n})\Lambda_\phi(\bfT_{K_n})$ aids MLE/MAP for $\alpha, \phi$
+	
+	We have explicit formulae for MLE/MAP estimates for $\bfPsi$
 \end{frame}
+
+\section{Experiments}
+
 
 \begin{frame}
 	\frametitle{References}
