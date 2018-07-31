@@ -9,6 +9,7 @@
 \usepackage[english]{babel} % English language/hyphenation
 
 \usepackage{amsmath,amsthm}
+\usepackage{multirow}
 
 \usepackage{tikz}
 \usetikzlibrary{fit}					% fitting shapes to coordinates
@@ -276,6 +277,10 @@
 	\frac{m_{n}(d)}{K_n} \xrightarrow[n\to\infty]{p} L(d)d^{-\eta} \;,
 	\end{align}
 	for slowly varying function $L(d)$.
+	
+	\vspace{20pt}
+	\pause
+	\small{A slowly varying function $L$ has the property ${\lim_{x\to\infty} L(rx)/L(x) = 1}$ for all ${r>0}$ \cite{bingham1989}.}
 \end{frame}
 
 \begin{frame}
@@ -285,15 +290,15 @@
 		K_n &= \sum_{d=1}^\infty m_n(d), \\
 		n &= \sum_{d=1}^\infty d\, m_n(d).
 	\end{align*}
-	Suppose (somewhat informally) that
-	\begin{equation*}
-		K_n = C_{n, \eta} \sum_{d=1}^n d^{-\eta}
-	\end{equation*}
-	\pause
-	then 
-	\begin{equation*}	
-	n = C_{n, \eta} \sum_{d=1}^n d^{-\eta + 1} = K_n \, \frac{\sum_{d=1}^n d^{-\eta + 1}}{\sum_{d=1}^n d^{-\eta}}
-	\end{equation*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Power laws and sparsity}
+	Suppose $m_n(d)$ is power law distributed
+	\begin{align*}
+	K_n &= C \sum_{d=1}^n d^{-\eta}, \\
+	n &= C \sum_{d=1}^n d^{-\eta + 1} = K_n \, \frac{\sum_{d=1}^n d^{-\eta + 1}}{\sum_{d=1}^n d^{-\eta}}.
+	\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -335,7 +340,6 @@
 	
 \end{frame}
 
-\subsection{Empirical study}
 \begin{frame}
 	\frametitle{Ask Ubuntu arrival process}
 	\begin{figure}[h]
@@ -396,17 +400,17 @@
 	\vspace{15pt}
 	
 	Arrivals
-	\begin{align}
+	\begin{align*}
 	T_{j+1} - T_{j} \simiid \text{Geom}\left( \beta \right)
-	\end{align}
+	\end{align*}
 	Size-biased reinforcement
-	\begin{align} 
+	\begin{align*} 
 	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
 	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
 	j &\text{ w.p.} \propto d_{j,n} && \text{otherwise} 
 	\end{aligned}\end{cases}
 	\label{eq:ys}
-	\end{align}
+	\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -424,14 +428,14 @@
 	\vspace{15pt}
 	
 	Urn process
-	\begin{align} 
+	\begin{align*} 
 	\ee_{n+1} | \bfee_{n} &= \begin{cases}\begin{aligned}
 	K_{n+1} & \text{ w.p. } \frac{\theta + K_n \tau}{n + \theta}  \\
 	& \\
 	j &\text{ w.p. } \frac{d_{j,n} - \tau}{\theta + n} 
 	\end{aligned}\end{cases}
-	\label{eq:pyp1}
-	\end{align}
+	\label{eq:pyp2}
+	\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -462,17 +466,16 @@
 	\vspace{15pt}
 	
 	Arrivals
-	\begin{align}
+	\begin{align*}
 	\bbP(T_{j+1} - T_j > t \mid T_j) = \prod_{i=1}^{t} \frac{T_j + t - j \tau}{T_j + t + \theta}
-	\end{align}
+	\end{align*}
 	Size-biased reinforcement
-	\begin{align} 
+	\begin{align*} 
 	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
 	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
 	j &\text{ w.p.} \propto (d_{j,n} - \tau) && \text{otherwise} 
 	\end{aligned}\end{cases}
-	\label{eq:pyp}
-	\end{align}
+	\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -481,17 +484,17 @@
 	\vspace{15pt}
 	
 	Arrivals
-	\begin{align}
+	\begin{align*}
 	\bfT \sim \Lambda_\phi
-	\end{align}
+	\end{align*}
 	Size-biased reinforcement
-	\begin{align} 
+	\begin{align*} 
 	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
 	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
 	j &\text{ w.p.} \propto (d_{j,n} - \alpha) && \text{otherwise} 
 	\end{aligned}\end{cases}
 	\label{eq:bntl}
-	\end{align}
+	\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -548,9 +551,36 @@
 	\end{align*}
 \end{frame}
 
+\begin{frame}
+	\frametitle{BNTL properties}
+	\begin{itemize}
+		\item Collapsed sampler
+		\item Latent representation
+		\item But \textit{not} from de Finetti -- latents change with $K_n$
+	\end{itemize}
+\end{frame}
 
-\section{Inference}
+
+\section{Sampling and inference}
 \subsection{Preliminaries}
+\begin{frame}
+	\frametitle{Sampling and inference}
+	\begin{itemize}
+		\item Sampling posterior on latents
+		\item Point estimation of latents
+		\item Sampling predictive distribution
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sampling and inference}
+	\begin{itemize}
+		\item Sampling posterior on latents \textbf{Condition on what?}
+		\item Point estimation of latents 
+		\item Sampling predictive distribution
+	\end{itemize}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Observation cases}
 	\begin{center}
@@ -568,25 +598,30 @@
 \begin{frame}
 \frametitle{Sampling $\bfPsi$}
 
-If $\bfee_n$ is observed we have a closed form for $\bfPsi$
+If $\bfee_n$ or $d_{K_n}$ observed
 \begin{align*}
-	p_{\alpha, \phi}(\bfPsi_{K_n}| \bfee_n) = \frac{p_{\alpha, \phi}(\bfPsi_{K_n}, \bfee_n)}{p_{\alpha, \phi}(\bfee_n)},
+	p_{\alpha, \phi}(\bfPsi_{K_n}, \bfee_n | \bfT_{K_n}, \bfd_{K_n}) &\propto \prod_{j=1}^{K_n} &&\Psi_j ^{ - \alpha} (1-\Psi_j)^{T_j - (j-1)\alpha - 1} \\
+	&&&\cdot \prod_{j=1}^{K_n} \Psi_j^{d_{j,n}-1}(1-\Psi_j)^{\bar{d}_{j-1,n} - T_j}\\
+	&\propto \prod_{j=1}^{K_n} &&\Psi_j ^{d_{j,n} - \alpha -1} (1-\Psi_j)^{\bar{d}_{j-1,n} - (j-1)\alpha - 1}
 \end{align*}
-furthermore
-\begin{equation*}
-	\Psi_j \mid \bfee_n, \bfPsi_{\setminus j} \sim \text{Beta}(d_{j,n} - \alpha, \bar{d}_{j-1,n} - (j-1)\alpha) \;,
-\end{equation*}
 where
 \begin{equation*}
-	\bar{d}_{j,n} = \sum_{i=1}^j d_{j,n}.
+\bar{d}_{j,n} = \sum_{i=1}^j d_{j,n}.
 \end{equation*}
 
-Talk more about degree being suff stats -- insert $p(d, \Psi)$
+\end{frame}
 
-\begin{itemize}
-	\item For fixed $\alpha$, we have a closed form posterior
-	\item Learning other variables, we have a closed form Gibbs update
-\end{itemize}
+\begin{frame}
+	\frametitle{Sampling $\bfPsi$}
+	Spot a closed form for $\bfPsi$
+	\begin{equation*}
+	\Psi_j \mid \bfee_n, \bfPsi_{\setminus j} \sim \text{Beta}(d_{j,n} - \alpha, \bar{d}_{j-1,n} - (j-1)\alpha) \;,
+	\end{equation*}
+	
+	\begin{itemize}
+		\item For fixed $\alpha$, we have our posterior
+		\item Learning other variables, we have a Gibbs update
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -603,36 +638,281 @@ Talk more about degree being suff stats -- insert $p(d, \Psi)$
 	\frametitle{Sampling $\bfT$}
 	Assume
 	\begin{align*}
-	\boldsymbol{\aDist}^{\phi}(\bfT_k) = \delta_{T_1}(1) \prod_{j=2}^k \aDist_j^{\phi}(\Delta_j | T_{j-1}) \;,
+	\aDist^{\phi}(\bfT_k) = \delta_{T_1}(1) \prod_{j=2}^k \aDist_j^{\phi}(\Delta_j | T_{j-1}) \;,
 	\end{align*}
 	Support of $T_j - T_{j-1} | T_{\backslash j}$ is
 	\begin{equation*}
 		\{ 1, ..., \min(T_{j+1} - T_{j-1} - 1, \bar{d}_{j-1} - T_{j-1} + 1)  \}
 	\end{equation*}
-	Using our assumptions we can compute each conditional probability
+	and we can compute each probability
+	\begin{align*}
+		p_{\alpha, \phi}(T_j - T_{j-1} = s | \bfT_{\backslash j} , \bfd_{K}) \propto &\  \Lambda_j^\phi(s|T_{j-1})\Lambda_{j+1}^\phi (T_{j+1}-T_{j-1} - s) \\
+		&\cdot \binom{\bar{d}_j - T_{j-1} - s}{d_j - 1}
+	\end{align*}
+	and sample.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sampling $\sigma[K_n]$}
-	Use Metropolis-Hastings with swap proposal $\sigma_j \leftrightarrow \sigma{j+1}$
+	\frametitle{Sampling $\sigma[K_n]$}\
+
+	\begin{itemize} 
+	\item Use Metropolis-Hastings with swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
 	
-	Ratio of joints from ...
+	\item Ratio of joints can be easily computed in terms of $\Gamma$ function.
+	\end{itemize}
 \end{frame}
 
 \subsection{Point estimation}
 \begin{frame}
 	\frametitle{Point estimation}
-	Factorization $p_{\alpha, \phi}(\bfee_n) = p_\alpha (\bfee_n | \bfT_{K_n})\Lambda_\phi(\bfT_{K_n})$ aids MLE/MAP for $\alpha, \phi$
+	\begin{itemize} 
 	
-	We have explicit formulae for MLE/MAP estimates for $\bfPsi$
+		\item Factorization $p_{\alpha, \phi}(\bfee_n) = p_\alpha (\bfee_n | \bfT_{K_n})\Lambda_\phi(\bfT_{K_n})$ 
+
+		\item Learn $\alpha$ separately from $\phi$ using standard optimization (low dimensional)
+	
+		\item We have explicit formulae for MLE/MAP estimates for $\bfPsi$
+	\end{itemize}
 \end{frame}
 
 \section{Experiments}
+\subsection{Inference}
+\begin{frame}
+	\frametitle{Synthetic data}
+	\begin{itemize}
+		\item Simulate 500 edges from the prior with fixed $\alpha$, $\Lambda_\phi$ 
+		\item Either $\PYP$ or $\Geom$
+		\item Observe final snapshot of the graph only
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gibbs sampler results}
+	\begin{table}[h]
+		%  \caption{Results of Gibbs sampling experiments on synthetic data $(\alpha^* = 0.75)$. The top four rows show results from each of four different BNTL models fit to a synthetic graph with 500 edges generated by the coupled $\PYP$ BNTL model; the bottom four rows show the same BNTL models fit to a synthetic graph with $\Geom(0.25)$-distributed interarrivals.}
+		\label{tab:ess}
+		\vspace*{-0.75\baselineskip}
+		\begin{center}
+			\resizebox{1.0\textwidth}{!}{
+				\begin{tabular}{lllll}
+					Gen. arrival distn. & Inference model & $|\hat{\alpha} - \alpha^*|$ & $|\mathbf{\hat{S}} - \mathbf{S^*}|$ & Pred. log-lik.  \\
+					\hline
+					$\PYP(1.0,0.75)$ &  $(\tau,\PYP(\theta,\tau))$ &  \textbf{0.046 $\pm$ 0.002}  &  \textbf{28.5 $\pm$ 0.7}  & -\textbf{2637.0 $\pm$ 0.1}  \\ 
+					
+					$\PYP(1.0,0.75)$  &  $(\alpha,\Geom(\beta))$  &  {0.049 $\pm$ 0.004}  &  66.8 $\pm$ 1.2  & -2660.5 $\pm$ 0.7  \\ 
+					\hline
+					
+					$\Geom(0.25)$ & $(\tau,\PYP(\theta,\tau))$ &  0.086 $\pm$ 0.002  &  56.6 $\pm$ 1.3  & -2386.8 $\pm$ 0.1  \\  
+					
+					$\Geom(0.25)$ & $(\alpha,\Geom(\beta))$ &  \textbf{0.043 $\pm$ 0.003}  &  \textbf{24.8 $\pm$ 0.8}  & -\textbf{2382.6 $\pm$ 0.2}  \\ 
+					
+					\end{tabular}
+					}
+				\end{center}
+			\end{table}
+			
+where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
+\end{frame}
+
+\subsection{Scalability of Gibbs sampler}
+\begin{frame}
+	\frametitle{Scalability of Gibbs sampler}
+	\begin{itemize}
+		\item Do we learn from all data?
+		\item How does performance scale?
+	\end{itemize}
+	\pause
+	
+	\begin{table}[t]
+		\label{tab:ess:scale:n}
+		\vspace*{-0.25\baselineskip}
+		\begin{center}
+			%  \resizebox{0.6\textwidth}{!}{
+			\begin{tabular}{l  ll}
+				& $n=200$ &  $n=20000$ \\ 
+				\hline
+				$|\hat{\alpha} - \alpha^*|$ & 0.12 $\pm$ 0.01 &  0.01 $\pm$ 0.00 \\ 
+				
+				$|\hat{\beta} - \beta^*|$ &  0.02 $\pm$ 0.00  &    0.00 $\pm$ 0.00  \\ 
+				
+				ESS &  0.90 $\pm$ 0.04  &   0.75 $\pm$ 0.08  \\  
+				
+				Runtime (s) &  21 $\pm$ 0   &  2267 $\pm$ 2  \\ 
+				
+			\end{tabular}
+			%}
+		\end{center}
+	\end{table}
+	\begin{itemize}
+		\item Most expensive Gibss update is for $\bfT$
+	\end{itemize}
+\end{frame}
+
+\subsection{Large scale real data experiments}
+\begin{frame}
+	\frametitle{Large scale real data experiments}
+	\begin{itemize}
+		\item MLE point estimation for SNAP datasets
+		\item Predictive log-likelihood
+	\end{itemize}
+	
+\end{frame}
 
 
 \begin{frame}
+	\frametitle{MLEs for SNAP datasets}
+	$\PYP$ parameter estimates vary coupled and uncoupled
+	\begin{table}[!ht]
+		\begin{center}
+			\color{lightgray}{
+			\resizebox{1.05\textwidth}{!}{
+				\begin{tabular}{llll | lllllll}
+					\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{\color{black}{Coupled $\PYP(\theta,\alpha)$}}  & &  \multicolumn{2}{c}{\color{black}{Uncoupled $\PYP(\theta,\tau)$}} &  & \multicolumn{3}{c}{$\Geom(\geom)$}                             \\
+					\cline{2-4} \cline{6-7} \cline{9-11}
+					& \color{black}{$(\hat{\theta},\hat{\alpha})$} & $\hat{\eta}$           & Pred. l-l.            & \color{black}{$\hat{\alpha}$}    & \color{black}{$(\hat{\theta},\hat{\tau})$} & Pred. l-l.     &     & $\hat{\beta}$  & $\hat{\eta}$   & Pred. l-l.                             \\
+					\hline
+					Ask Ubuntu  & \color{black}{(18080, 0.25)} & 1.25   & -3.707e6              & \color{black}{-2.54}            & \color{black}{(-0.99, 0.99)}    & -3.678e6  &   &  0.083 & 2.32    & \textbf{-3.678e6}                         \\
+					UCI social network & (320.4, 4.4e-11) & --   & -1.600e5            & -4.98             & (5.50, 0.52)     & \textbf{-1.595e6}   &  & 0.016  & 2.10  & -1.596e5                    \\
+					EU email   & (113.6, 2.5e-14)  & --    & \textbf{-8.06e5}              & -1.86              & (113.6, 9.2e-10)      & \textbf{-8.06e5}  &   & 0.001  & 2.00   & -8.07e5                     \\
+					Math Overflow & (2575, 0.15) & 1.15  & -1.685e6              & -6.62           & (-0.97, 0.997)    & -1.670e6 &    & 0.025  & 2.19   & \textbf{-1.670e6}                \\
+					Stack Overflow & \color{black}{(297600, 0.11)} & 1.11 & -3.358e8             & \color{black}{-8.94}            & \color{black}{(-1.0, 1.0)}      &  -3.333e8  &    &  0.020  & 2.21   & \textbf{-3.333e8}                 \\
+					Super User  & (20640, 0.24) & 1.24  & -5.855e6            & -4.19          & (-0.996, 1.0)      &  \textbf{-5.775e6}   &  & 0.067 & 2.37    & -5.775e6              \\
+					Wikipedia talk pages  & (14870, 0.54) & 1.54  & -3.074e7          & -0.25            & (-1.0, 1.0)   & \textbf{-3.066e7}  &   & 0.073  & 2.10   & -3.066e7                   
+				\end{tabular}
+			}}
+		\end{center}
+		\vspace*{-\baselineskip}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{MLEs for SNAP datasets}
+	Edge exchangeable models likely misspecified 
+	\begin{table}[!ht]
+		\begin{center}
+			\color{lightgray}{
+				\resizebox{1.05\textwidth}{!}{
+					\begin{tabular}{llll | lllllll}
+						\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{Coupled $\PYP(\theta,\alpha)$}  & &  \multicolumn{2}{c}{Uncoupled $\PYP(\theta,\tau)$} &  & \multicolumn{3}{c}{\color{black}{$\Geom(\geom)$}}                             \\
+						\cline{2-4} \cline{6-7} \cline{9-11}
+						& $(\hat{\theta},\hat{\alpha})$ & $\hat{\eta}$           & Pred. l-l.            & $\hat{\alpha}$    & $(\hat{\theta},\hat{\tau})$ & Pred. l-l.     &     & $\hat{\beta}$  & \color{black}{$\hat{\eta}$}   & Pred. l-l.                             \\
+						\hline
+						\color{black}{Ask Ubuntu}  & (18080, 0.25) & 1.25   & -3.707e6              & -2.54            & (-0.99, 0.99)    & -3.678e6  &   &  0.083 & \color{black}{2.32}    & \textbf{-3.678e6}                         \\
+						UCI social network & (320.4, 4.4e-11) & --   & -1.600e5            & -4.98             & (5.50, 0.52)     & \textbf{-1.595e6}   &  & 0.016  & 2.10  & -1.596e5                    \\
+						EU email   & (113.6, 2.5e-14)  & --    & \textbf{-8.06e5}              & -1.86              & (113.6, 9.2e-10)      & \textbf{-8.06e5}  &   & 0.001  & 2.00   & -8.07e5                     \\
+						Math Overflow & (2575, 0.15) & 1.15  & -1.685e6              & -6.62           & (-0.97, 0.997)    & -1.670e6 &    & 0.025  & 2.19   & \textbf{-1.670e6}                \\
+						\color{black}{Stack Overflow} & (297600, 0.11) & 1.11 & -3.358e8             & -8.94            & (-1.0, 1.0)      &  -3.333e8  &    &  0.020  & \color{black}{2.21}   & \textbf{-3.333e8}                 \\
+						Super User  & (20640, 0.24) & 1.24  & -5.855e6            & -4.19          & (-0.996, 1.0)      &  \textbf{-5.775e6}   &  & 0.067 & 2.37    & -5.775e6              \\
+						Wikipedia talk pages  & (14870, 0.54) & 1.54  & -3.074e7          & -0.25            & (-1.0, 1.0)   & \textbf{-3.066e7}  &   & 0.073  & 2.10   & -3.066e7                   
+					\end{tabular}
+				}}
+			\end{center}
+			\vspace*{-\baselineskip}
+		\end{table}
+	\end{frame}
+	
+\begin{frame}
+	\frametitle{MLEs for SNAP datasets}
+	Though better than $\Geom$ for some datasets
+	\begin{table}[!ht]
+		\begin{center}
+			\color{lightgray}{
+				\resizebox{1.05\textwidth}{!}{
+					\begin{tabular}{llll | lllllll}
+						\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{Coupled $\PYP(\theta,\alpha)$}  & &  \multicolumn{2}{c}{Uncoupled $\PYP(\theta,\tau)$} &  & \multicolumn{3}{c}{$\Geom(\geom)$}                             \\
+						\cline{2-4} \cline{6-7} \cline{9-11}
+						& $(\hat{\theta},\hat{\alpha})$ & $\hat{\eta}$           & Pred. l-l.            & $\hat{\alpha}$    & $(\hat{\theta},\hat{\tau})$ & Pred. l-l.     &     & $\hat{\beta}$  & $\hat{\eta}$   & Pred. l-l.                             \\
+						\hline
+						Ask Ubuntu  & (18080, 0.25) & 1.25   & -3.707e6              & -2.54            & (-0.99, 0.99)    & -3.678e6  &   &  0.083 & 2.32    & \textbf{-3.678e6}                         \\
+						UCI social network & (320.4, 4.4e-11) & --   & -1.600e5            & -4.98             & (5.50, 0.52)     & \textbf{-1.595e6}   &  & 0.016  & 2.10  & -1.596e5                    \\
+						\color{black}{EU email}   & \color{black}{(113.6, 2.5e-14)}  & --    & \color{black}{\textbf{-8.06e5}}              & \color{black}{-1.86}              & \color{black}{(113.6, 9.2e-10)}      & \color{black}{\textbf{-8.06e5}}  &   & \color{black}{0.001}  & \color{black}{2.00}   & \color{black}{-8.07e5}                     \\
+						Math Overflow & (2575, 0.15) & 1.15  & -1.685e6              & -6.62           & (-0.97, 0.997)    & -1.670e6 &    & 0.025  & 2.19   & \textbf{-1.670e6}                \\
+						Stack Overflow & (297600, 0.11) & 1.11 & -3.358e8             & -8.94            & (-1.0, 1.0)      &  -3.333e8  &    &  0.020  & 2.21   & \textbf{-3.333e8}                 \\
+						Super User  & (20640, 0.24) & 1.24  & -5.855e6            & -4.19          & (-0.996, 1.0)      &  \textbf{-5.775e6}   &  & 0.067 & 2.37    & -5.775e6              \\
+						Wikipedia talk pages  & (14870, 0.54) & 1.54  & -3.074e7          & -0.25            & (-1.0, 1.0)   & \textbf{-3.066e7}  &   & 0.073  & 2.10   & -3.066e7                   
+					\end{tabular}
+				}}
+			\end{center}
+			\vspace*{-\baselineskip}
+		\end{table}
+	\end{frame}
+	
+\begin{frame}
+	\frametitle{MLEs for SNAP datasets}
+	These datasets may lack sparsity
+	\begin{table}[!ht]
+		\begin{center}
+			\color{lightgray}{
+				\resizebox{1.05\textwidth}{!}{
+					\begin{tabular}{llll | lllllll}
+						\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{\color{black}{Coupled $\PYP(\theta,\alpha)$}}  & &  \multicolumn{2}{c}{\color{black}{Uncoupled $\PYP(\theta,\tau)$}} &  & \multicolumn{3}{c}{\color{black}{$\Geom(\geom)$}}                             \\
+						\cline{2-4} \cline{6-7} \cline{9-11}
+						& $(\hat{\theta},\hat{\alpha})$ & \color{black}{$\hat{\eta}$}           & Pred. l-l.            & $\hat{\alpha}$    & $(\hat{\theta},\hat{\tau})$ & Pred. l-l.     &     & $\hat{\beta}$  & $\hat{\eta}$   & Pred. l-l.                             \\
+						\hline
+						Ask Ubuntu  & (18080, 0.25) & 1.25   & -3.707e6              & -2.54            & (-0.99, 0.99)    & -3.678e6  &   &  0.083 & 2.32    & \textbf{-3.678e6}                         \\
+						\color{black}{UCI social network} & \color{black}{(320.4, 4.4e-11)} & \color{black}{--}   & -1.600e5            & -4.98             & (5.50, 0.52)     & \textbf{-1.595e6}   &  & 0.016  & 2.10  & -1.596e5                    \\
+						\color{black}{EU email}   & \color{black}{(113.6, 2.5e-14)}  & \color{black}{--}    & \textbf{-8.06e5}              & -1.86              & (113.6, 9.2e-10)      & \textbf{-8.06e5}  &   & 0.001  & 2.00   & -8.07e5                     \\
+						Math Overflow & (2575, 0.15) & 1.15  & -1.685e6              & -6.62           & (-0.97, 0.997)    & -1.670e6 &    & 0.025  & 2.19   & \textbf{-1.670e6}                \\
+						Stack Overflow & (297600, 0.11) & 1.11 & -3.358e8             & -8.94            & (-1.0, 1.0)      &  -3.333e8  &    &  0.020  & 2.21   & \textbf{-3.333e8}                 \\
+						Super User  & (20640, 0.24) & 1.24  & -5.855e6            & -4.19          & (-0.996, 1.0)      &  \textbf{-5.775e6}   &  & 0.067 & 2.37    & -5.775e6              \\
+						Wikipedia talk pages  & (14870, 0.54) & 1.54  & -3.074e7          & -0.25            & (-1.0, 1.0)   & \textbf{-3.066e7}  &   & 0.073  & 2.10   & -3.066e7                   
+					\end{tabular}
+				}}
+			\end{center}
+			\vspace*{-\baselineskip}
+		\end{table}
+	\end{frame}
+	
+%\begin{frame}
+%	\frametitle{MLEs for SNAP datasets}
+%	Though not for all datasets
+%	\begin{table}[!ht]
+%		\begin{center}
+%			\color{lightgray}{
+%				\resizebox{1.05\textwidth}{!}{
+%					\begin{tabular}{llll | lllllll}
+%						\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{Coupled $\PYP(\theta,\alpha)$}  & &  \multicolumn{2}{c}{Uncoupled $\PYP(\theta,\tau)$} &  & \multicolumn{3}{c}{$\Geom(\geom)$}                             \\
+%						\cline{2-4} \cline{6-7} \cline{9-11}
+%						& $(\hat{\theta},\hat{\alpha})$ & $\hat{\eta}$           & Pred. l-l.            & $\hat{\alpha}$    & $(\hat{\theta},\hat{\tau})$ & Pred. l-l.     &     & $\hat{\beta}$  & $\hat{\eta}$   & Pred. l-l.                             \\
+%						\hline
+%						Ask Ubuntu  & (18080, 0.25) & 1.25   & -3.707e6              & -2.54            & (-0.99, 0.99)    & -3.678e6  &   &  0.083 & 2.32    & \textbf{-3.678e6}                         \\
+%						UCI social network & (320.4, 4.4e-11) & --   & -1.600e5            & -4.98             & (5.50, 0.52)     & \textbf{-1.595e6}   &  & 0.016  & 2.10  & -1.596e5                    \\
+%						EU email   & (113.6, 2.5e-14)  & --    & \textbf{-8.06e5}              & -1.86              & (113.6, 9.2e-10)      & \textbf{-8.06e5}  &   & 0.001  & 2.00   & -8.07e5                     \\
+%						Math Overflow & (2575, 0.15) & 1.15  & -1.685e6              & -6.62           & (-0.97, 0.997)    & -1.670e6 &    & 0.025  & 2.19   & \textbf{-1.670e6}                \\
+%						Stack Overflow & (297600, 0.11) & 1.11 & -3.358e8             & -8.94            & (-1.0, 1.0)      &  -3.333e8  &    &  0.020  & 2.21   & \textbf{-3.333e8}                 \\
+%						Super User  & (20640, 0.24) & 1.24  & -5.855e6            & -4.19          & (-0.996, 1.0)      &  \textbf{-5.775e6}   &  & 0.067 & 2.37    & -5.775e6              \\
+%						Wikipedia talk pages  & (14870, 0.54) & 1.54  & -3.074e7          & -0.25            & (-1.0, 1.0)   & \textbf{-3.066e7}  &   & 0.073  & 2.10   & -3.066e7                   
+%					\end{tabular}
+%				}}
+%			\end{center}
+%			\vspace*{-\baselineskip}
+%		\end{table}
+%	\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+	\frametitle{Conclusion}
+	\begin{itemize}
+		\item BNTL models are \textit{flexible}
+		\item BNTL models are \textit{tractable}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Future work}
+	\begin{itemize}
+		\item Scalability of inference
+		\begin{itemize}
+			\item Metroplis-Hastings
+			\item variational inference \cite{linderman2017}
+		\end{itemize}
+		\item Recency-weighted preferential attachment
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{References}
-	\footnotesize{\bibliographystyle{unsrt}
+	\tiny{\bibliographystyle{unsrt}
 	\bibliography{refs}}
 \end{frame}
 
