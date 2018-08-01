@@ -65,16 +65,22 @@
 \setbeamertemplate{title page}{  
   \leavevmode
   \begin{beamercolorbox}[wd=\paperwidth,ht=\paperheight,center]{headline}
+  	\makebox[\linewidth][c]{%
+  		\begin{minipage}{\dimexpr\textwidth+4em\relax}
 %	   \topskip0pt
 %	   \vspace*{\fill}
-	  	
-  	   \raggedright
+	  
+  	   \centering{
 	   \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
 	   \vspace{20pt}
 	   \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
-	   % \vspace{-5pt}
+	   \vspace{20pt}
 	   \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}  
-	   \vfil
+	   \vspace{20pt}
+	   
+	   	\includegraphics[height=.1\linewidth]{fig/oxnoback.pdf}
+	   }
+	   \vspace{250pt}
 	   % \vspace{-10pt}
 %    \begin{columns}[T]
 %      \begin{column}{.02\paperwidth}
@@ -107,6 +113,8 @@
 %      \end{column}
 %    \end{columns}
 %    \vskip2ex
+  		\end{minipage}%
+  	}%
   \end{beamercolorbox}
 
 %  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
