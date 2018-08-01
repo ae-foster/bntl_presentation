@@ -98,165 +98,36 @@
 	\frametitle{Temporal networks}
 	\textbf{Examples}
 	\begin{itemize}
-		\item Messages on WhatsApp
+		\item Messages between people (email, WhatsApp, ...)
 		\item Posts + replies on StackOverflow
-	\end{itemize}
-	\pause
-	\vspace{15pt}
-	\textbf{Abstraction}
-	\begin{itemize}
-		\item Graph grows adding one edge $(Z_i, Z_{i+1})$ at a time
-		\item Vertices enter the graph when connected to
 	\end{itemize}
 	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	Ends of edges $\mathbf{Z}_n = Z_1, ..., Z_n$ \\
-	E.g. $\mathbf{Z}_6 = \underline{a,b},\underline{c,a},\underline{d,e}$
-	\begin{figure}[H]
-		\begin{center}
-			% ,>=stealth',shorten >=1pt,
-			\begin{tikzpicture}[->,auto,node distance=1.4cm, thick,baseline=0]
-			\tikzstyle{every node}=[shape=circle,draw=black,text=black,scale=1.5]
-			\tikzstyle{every edge}=[line width=1pt,draw=black]
-			
-			\node         (1)                    {$a$};
-			\node         (2) [above right of=1] {$b$};
-			\node         (3) [below right of=1] {$c$};
-			\node         (4) [right of=2]       {$d$};
-			\node         (5) [right of=3]       {$e$};
-			
-			\draw (1) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {1} node [pos=0.85, sloped, above, draw=none, scale=0.5] {2} (2);
-			\draw (3) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {3} node [pos=0.85, sloped, above, draw=none, scale=0.5] {4} (1);
-			\draw (4) edge node [pos=0.1, sloped, above, draw=none, scale=0.5] {5} node [pos=0.9, sloped, above, draw=none, scale=0.5] {6} (5);
-			\end{tikzpicture}
-			
-		\end{center}
-		%\caption{ Example graph: ends of edges $\mathbf{Z}_{6} = 1,2,\;3,1,\;4,5$, vertex arrival times $\mathbf{T}_{5} = 1, 2, 3, 5, 6$, vertex counts $\mathbf{K}_{6} = 1, 2, \; 3, 3, \; 4, 5$, and degree counts $m_6(1) = 4, m_6(2) = 1$.}
-	\end{figure}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet1}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	Number of vertices $K_n$ \\
-	E.g. $K_6 = 5$
-	\begin{figure}[H]
-		\begin{center}
-			% ,>=stealth',shorten >=1pt,
-			\begin{tikzpicture}[->,auto,node distance=1.4cm, thick,baseline=0]
-			\tikzstyle{every node}=[shape=circle,draw=black,text=black,scale=1.5]
-			\tikzstyle{every edge}=[line width=1pt,draw=black]
-			
-			\node         (1)                    {$a$};
-			\node         (2) [above right of=1] {$b$};
-			\node         (3) [below right of=1] {$c$};
-			\node         (4) [right of=2]       {$d$};
-			\node         (5) [right of=3]       {$e$};
-			
-			\draw (1) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {1} node [pos=0.85, sloped, above, draw=none, scale=0.5] {2} (2);
-			\draw (3) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {3} node [pos=0.85, sloped, above, draw=none, scale=0.5] {4} (1);
-			\draw (4) edge node [pos=0.1, sloped, above, draw=none, scale=0.5] {5} node [pos=0.9, sloped, above, draw=none, scale=0.5] {6} (5);
-			\end{tikzpicture}
-			
-		\end{center}
-		%\caption{ Example graph: ends of edges $\mathbf{Z}_{6} = 1,2,\;3,1,\;4,5$, vertex arrival times $\mathbf{T}_{5} = 1, 2, 3, 5, 6$, vertex counts $\mathbf{K}_{6} = 1, 2, \; 3, 3, \; 4, 5$, and degree counts $m_6(1) = 4, m_6(2) = 1$.}
-	\end{figure}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet2}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	Arrival time of vertex $j$ is $T_j := \inf \{n: Z_n = j\}$ \\
-	E.g. $T_e = 6$
-	\begin{figure}[H]
-		\begin{center}
-			% ,>=stealth',shorten >=1pt,
-			\begin{tikzpicture}[->,auto,node distance=1.4cm, thick,baseline=0]
-			\tikzstyle{every node}=[shape=circle,draw=black,text=black,scale=1.5]
-			\tikzstyle{every edge}=[line width=1pt,draw=black]
-			
-			\node         (1)                    {$a$};
-			\node         (2) [above right of=1] {$b$};
-			\node         (3) [below right of=1] {$c$};
-			\node         (4) [right of=2]       {$d$};
-			\node         (5) [right of=3]       {$e$};
-			
-			\draw (1) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {1} node [pos=0.85, sloped, above, draw=none, scale=0.5] {2} (2);
-			\draw (3) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {3} node [pos=0.85, sloped, above, draw=none, scale=0.5] {4} (1);
-			\draw (4) edge node [pos=0.1, sloped, above, draw=none, scale=0.5] {5} node [pos=0.9, sloped, above, draw=none, scale=0.5] {6} (5);
-			\end{tikzpicture}
-			
-		\end{center}
-		%\caption{ Example graph: ends of edges $\mathbf{Z}_{6} = 1,2,\;3,1,\;4,5$, vertex arrival times $\mathbf{T}_{5} = 1, 2, 3, 5, 6$, vertex counts $\mathbf{K}_{6} = 1, 2, \; 3, 3, \; 4, 5$, and degree counts $m_6(1) = 4, m_6(2) = 1$.}
-	\end{figure}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet3}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	Degree of vertex $j$ is $d_{j,n}$ \\
-	E.g. $d_{e,6} = 1$
-	\begin{figure}[H]
-		\begin{center}
-			% ,>=stealth',shorten >=1pt,
-			\begin{tikzpicture}[->,auto,node distance=1.4cm, thick,baseline=0]
-			\tikzstyle{every node}=[shape=circle,draw=black,text=black,scale=1.5]
-			\tikzstyle{every edge}=[line width=1pt,draw=black]
-			
-			\node         (1)                    {$a$};
-			\node         (2) [above right of=1] {$b$};
-			\node         (3) [below right of=1] {$c$};
-			\node         (4) [right of=2]       {$d$};
-			\node         (5) [right of=3]       {$e$};
-			
-			\draw (1) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {1} node [pos=0.85, sloped, above, draw=none, scale=0.5] {2} (2);
-			\draw (3) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {3} node [pos=0.85, sloped, above, draw=none, scale=0.5] {4} (1);
-			\draw (4) edge node [pos=0.1, sloped, above, draw=none, scale=0.5] {5} node [pos=0.9, sloped, above, draw=none, scale=0.5] {6} (5);
-			\end{tikzpicture}
-			
-		\end{center}
-		%\caption{ Example graph: ends of edges $\mathbf{Z}_{6} = 1,2,\;3,1,\;4,5$, vertex arrival times $\mathbf{T}_{5} = 1, 2, 3, 5, 6$, vertex counts $\mathbf{K}_{6} = 1, 2, \; 3, 3, \; 4, 5$, and degree counts $m_6(1) = 4, m_6(2) = 1$.}
-	\end{figure}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet4}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Temporal networks}
-	Degree counts $m_n(d) := |\{j: d_{j,n} = d\}|$ \\
-	E.g. $m_6(1) = 4, m_6(2) = 1$
-	\begin{figure}[H]
-		\begin{center}
-			% ,>=stealth',shorten >=1pt,
-			\begin{tikzpicture}[->,auto,node distance=1.4cm, thick,baseline=0]
-			\tikzstyle{every node}=[shape=circle,draw=black,text=black,scale=1.5]
-			\tikzstyle{every edge}=[line width=1pt,draw=black]
-			
-			\node         (1)                    {$a$};
-			\node         (2) [above right of=1] {$b$};
-			\node         (3) [below right of=1] {$c$};
-			\node         (4) [right of=2]       {$d$};
-			\node         (5) [right of=3]       {$e$};
-			
-			\draw (1) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {1} node [pos=0.85, sloped, above, draw=none, scale=0.5] {2} (2);
-			\draw (3) edge node [pos=0.15, sloped, above, draw=none, scale=0.5] {3} node [pos=0.85, sloped, above, draw=none, scale=0.5] {4} (1);
-			\draw (4) edge node [pos=0.1, sloped, above, draw=none, scale=0.5] {5} node [pos=0.9, sloped, above, draw=none, scale=0.5] {6} (5);
-			\end{tikzpicture}
-			
-		\end{center}
-		%\caption{ Example graph: ends of edges $\mathbf{Z}_{6} = 1,2,\;3,1,\;4,5$, vertex arrival times $\mathbf{T}_{5} = 1, 2, 3, 5, 6$, vertex counts $\mathbf{K}_{6} = 1, 2, \; 3, 3, \; 4, 5$, and degree counts $m_6(1) = 4, m_6(2) = 1$.}
-	\end{figure}
-\end{frame}
 
 \begin{frame}
 	\frametitle{Sparsity}
-	\begin{itemize}
-		\item For a dense graph, $K_n = O(n^{1/2})$
-		\item For a sparse graph,
-		\begin{equation*}
-			K_n = O(n^{1/(1+\sigma)})
-		\end{equation*}
-		for $0 \le \sigma < 1$
-		\item Stack Overflow network likely sparse
-	\end{itemize}
+	\includegraphics[angle=90,origin=c,scale=0.37]{fig/sparsity}
 \end{frame}
 
 \begin{frame}
@@ -266,52 +137,19 @@
 	p(d) \propto d^{-\eta} 
 	\end{equation*}
 	where $\eta > 1$
-	
-	\pause
-	Asymptotic degree distribution has \textbf{power law tail with exponent} $\eta$ if
-	\begin{align} 
-	\label{eq:plaw}
-	\frac{m_{n}(d)}{K_n} \xrightarrow[n\to\infty]{p} L(d)d^{-\eta} \;,
-	\end{align}
-	for slowly varying $L(d)$
-	
-	\vspace{20pt}
-	\pause
-	\small{Slowly varying function has ${\lim_{x\to\infty} L(rx)/L(x) = 1}$ for all ${r>0}$ \cite{bingham1989}}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Power laws and sparsity}
-	We have
+	\frametitle{Power law degree distribution}
+	\includegraphics[angle=90,origin=c,scale=0.37]{fig/powerlaw}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sparity and power law}
 	\begin{align*}
-		K_n &= \sum_{d=1}^n m_n(d), \\
-		n &= \sum_{d=1}^n d\, m_n(d).
+	\textbf{Sublinear } \text{sparsity} & \quad \iff \quad  \eta \in (1,2) \\
+	\textbf{Linear } \text{sparsity} & \quad \iff \quad \eta > 2
 	\end{align*}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Power laws and sparsity}
-	Suppose $m_n(d)$ is power law distributed
-	\begin{align*}
-	K_n &= C \sum_{d=1}^n d^{-\eta}, \\
-	n &= C \sum_{d=1}^n d^{-\eta + 1} \\
-	&= K_n \, \frac{\sum_{d=1}^n d^{-\eta + 1}}{\sum_{d=1}^n d^{-\eta}}.
-	\end{align*}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Power laws and sparsity}
-	Letting $n\to \infty$ in
-	\begin{equation*}
-		\frac{K_n}{n} = \frac{\sum_{d=1}^n d^{-\eta}}{\sum_{d=1}^n d^{-\eta + 1}}
-	\end{equation*}
-	we see $K_n = O(n)$ if $\eta > 2$, $K_n = o(n)$ if $\eta \in (1, 2]$.
-	\vspace{40pt}
-	\pause
-	
-	\textbf{Summary}
-	
-	For sparse graphs, $\sigma=0 \leftrightarrow \eta > 2$ and $\sigma > 0 \leftrightarrow \eta \in (1,2]$.
 \end{frame}
 
 \begin{frame}
@@ -338,30 +176,21 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Ask Ubuntu arrival process}
+	\frametitle{Ask Ubuntu}
 	\begin{figure}[h]
 		\includegraphics[width=1.0\textwidth]{fig/n_askubuntu_arrival.pdf}
 	\end{figure}
 	%$\hat{\sigma}=-0.0990787$
-	$\hat{\sigma} = -0.099$
+	%$\hat{\sigma} = -0.099$
 \end{frame}
 
 \begin{frame}
-	\frametitle{Stack Overflow arrival process}
-	\begin{figure}[h]
-		\includegraphics[width=1.0\textwidth]{fig/n_stackoverflow_arrival.pdf}
-	\end{figure}
-	% 0.01533192
-	$\hat{\sigma}=0.015$
-\end{frame}
-
-\begin{frame}
-	\frametitle{UCI social network arrival process}
+	\frametitle{UCI social network}
 	\begin{figure}[h]
 		\includegraphics[width=1.0\textwidth]{fig/n_CollegeMsg_arrival.pdf}
 	\end{figure}
 	% $\sigma=0.95228934$
-	$\hat{\sigma} = 0.952$
+	% $\hat{\sigma} = 0.952$
 \end{frame}
 
 \begin{frame}
@@ -370,39 +199,24 @@
 		\includegraphics[width=0.8\textwidth]{fig/nodes_degre_power_law_askubuntu.pdf}
 	\end{figure}
 	
-	Estimation used technique of \cite{clauset}
+	$\hat{\eta} = 2.14$ estimated using technique of \cite{clauset}
 	
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Models}
-	\begin{itemize}
-		\item Vertex exchangeable models do not give sparsity \cite{aldous1981} \cite{hoover1979}
-		\item Exchangeable point process models \cite{caronfox} have an independent notion of time
-		\pause
-		\item \textbf{Preferential attachment models} \cite{barabasi1999}
-		\item \textbf{Edge exchangeable models} \cite{CraneDempsey2017} \cite{cai2016}
-	\end{itemize}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Yule-Simon Process}
-	Parameter $\beta \in (0, 1)$.
-	\vspace{15pt}
-	
-	Arrivals
-	\begin{align*}
-	T_{j+1} - T_{j} \simiid \text{Geom}\left( \beta \right)
-	\end{align*}
-	Size-biased reinforcement
-	\begin{align*} 
-	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
-	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
-	j &\text{ w.p.} \propto d_{j,n} && \text{otherwise} 
-	\end{aligned}\end{cases}
-	\label{eq:ys}
-	\end{align*}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ys}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Yule-Simon Process}
+	\includegraphics[angle=90,origin=c,scale=0.37]{fig/ys2}
 \end{frame}
 
 \begin{frame}
@@ -411,23 +225,11 @@
 	\begin{equation*}
 		\eta = 1 + \frac{1}{1-\beta} > 2
 	\end{equation*}
-	and $K_n = O(n)$
 \end{frame}
 
 \begin{frame}
 	\frametitle{Pitman-Yor Process}
-	Parameters $\tau \in (0, 1), \theta > -\tau$.
-	\vspace{15pt}
-	
-	Urn process
-	\begin{align*} 
-	\ee_{n+1} | \bfee_{n} &= \begin{cases}\begin{aligned}
-	K_{n+1} & \text{ w.p. } \frac{\theta + K_n \tau}{\theta + n}  \\
-	& \\
-	j &\text{ w.p. } \frac{d_{j,n} - \tau}{\theta + n} 
-	\end{aligned}\end{cases}
-	\label{eq:pyp2}
-	\end{align*}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/pyp}
 \end{frame}
 
 \begin{frame}
@@ -445,113 +247,32 @@
 	``The probability of all orderings of edge arrivals is the same''
 	
 	\vspace{20pt}
+	\begin{itemize}
+		\item Sublinear sparsity
+		\item $\eta \in (1,2)$
+	\end{itemize}
 	
-	\textbf{For edge exchangeable models, $K_n = o(n)$} \\
-	\textit{Sketch proof}
-	\begin{align*}
-		\prob (K_n / n \to 0) &= \bbE[\prob(K_n/n \to 0 \mid \text{paintbox})]
-	\end{align*}
-	Enough to show $\bbE[K_n | \text{paintbox}]/n \to 0$, which we can do directly from $P_j$ of the paintbox.
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Rewriting the Pitman-Yor Process}
-	Parameters $\tau \in (0, 1), \theta > -\tau$.
-	\vspace{15pt}
-	
-	Arrivals
-	\begin{align*}
-	\bbP(T_{j+1} - T_j > t \mid T_j) = \prod_{i=1}^{t} \frac{T_j + t - j \tau}{T_j + t + \theta}
-	\end{align*}
-	Size-biased reinforcement
-	\begin{align*} 
-	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
-	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
-	j &\text{ w.p.} \propto (d_{j,n} - \tau) && \text{otherwise} 
-	\end{aligned}\end{cases}
-	\end{align*}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Beta Neutral-to-the-left Process \cite{Bloem2017}}
-	Parameters $\alpha \in (-\infty, 1)$ and $\Lambda_\phi$ a law on $\mathbb{N}^\infty$.
-	\vspace{15pt}
-	
-	Arrivals
-	\begin{align*}
-	\bfT \sim \Lambda_\phi
-	\end{align*}
-	Size-biased reinforcement
-	\begin{align*} 
-	\ee_{n+1} | \bfee_{n}, \bfT &= \begin{cases}\begin{aligned}
-	K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
-	j &\text{ w.p.} \propto (d_{j,n} - \alpha) && \text{otherwise} 
-	\end{aligned}\end{cases}
-	\label{eq:bntl}
-	\end{align*}
+	\vspace{2pt}
+	\includegraphics[angle=90,origin=c,scale=0.37]{fig/bntl}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Relationship with other model classes}
-	\begin{figure}[H]
-		\begin{center}
-			\begin{tikzpicture}[->,auto,node distance=3.6cm, thick,baseline=0,scale=0.75]
-			
-			\tikzstyle{every node}=[scale=1.3]
-			
-			\def\pyp{(-0.9,-0.2) coordinate (a) circle (1.5cm)}
-			\def\ys{(-1,3.5) coordinate (b)  circle (1cm)}
-			\def\ex{(-3.5,-0.2) coordinate (c) ellipse (5.5cm and 2cm)}
-			\def\pa{(-2.4,3.5) coordinate (d) ellipse (3cm and 1.5cm)}
-			\def\bntl{(0.5,1.4) coordinate (e) ellipse (3.5cm and 4.2cm)}
-			
-			\draw \pyp  node {PYP};
-			\draw \ys node {YS};
-			\draw \ex;
-			\draw node at (-5.5,-0.2) {Edge exch.};
-			\draw \pa;
-			\draw node at (-3.7, 3.5) {PA};
-			\draw \bntl;
-			\draw node at (2,2.2) {BNTL};
-			\end{tikzpicture}
-		\end{center}
-	\end{figure}
+	\frametitle{Models -- again}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Hierarchical representation of BNTL process}
-	Arrivals
-	\begin{equation*}
-	\bfT \sim \Lambda_\phi
-	\end{equation*}
-	Latent sociabilities
-	\begin{equation*}
-		\Psi_j | T_j \sim \text{Beta}(1-\alpha,T_j-1-(j-1)\alpha) \text{ for } j\geq 1
-	\end{equation*}
-	Left-neutral resampling probabilities
-	\begin{align*}
-		P_{j,k+1} = 
-		\begin{cases}
-		P_{j,k}(1-\Psi_{k+1}), & j \in \{1,\dots,k\} \\
-		\Psi_{k+1}, & j = k+1
-		\end{cases}
-	\end{align*}
-	Sampling rule
-	\begin{align*} 
-		\ee_{n+1} | \mathbf{P}_{K_n}, \bfT &= \begin{cases}\begin{aligned}
-		K_{n+1} & \text{ w.p. } 1 && \text{if } n+1 = T_{K_{n+1}} \\
-		j &\text{ w.p. } P_{j, K_n} && \text{otherwise} 
-		\end{aligned}\end{cases}
-	\end{align*}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/bntllatent}
 \end{frame}
 
 \begin{frame}
-	\frametitle{BNTL properties}
-	\begin{itemize}
-		\item Collapsed sampler
-		\item Latent representation
-	\end{itemize}
+	\frametitle{Recursive scaling of BNTL latents}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
 \end{frame}
 
 \begin{frame}
@@ -566,20 +287,27 @@
 \section{Sampling and inference}
 \begin{frame}
 	\frametitle{Sampling and inference}
+	Three observation cases
 	\begin{itemize}
-		\item Sampling posterior on latents
-		\item Point estimation of latents
-		\item Sampling predictive distribution
+		\item Entire history
+		\item Vertex order
+		\item Snapshot
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sampling and inference}
-	\begin{itemize}
-		\item Sampling posterior on latents \textbf{Condition on what?}
-		\item Point estimation of latents 
-		\item Sampling predictive distribution
-	\end{itemize}
+	\frametitle{Entire history}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/observeall}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Vertex order}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/observeorder}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Snapshot}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/observesnap}
 \end{frame}
 
 \begin{frame}
@@ -588,32 +316,16 @@
 		\begin{tabular}{ll}
 			\textbf{Observation} & \textbf{Unobserved variables} \\
 			\hline
-			End of edge sequence $\bfee_n$ & $\alpha,\phi,\bfPsi_{K_n}$ \\
-			Vertex arrival-ordered graph $\bfd_{K_n}$ & $\alpha,\phi,\bfPsi_{K_n}, \bfT_{K_n}$ \\
-			Unlabeled graph & $\alpha,\phi,\bfPsi_{K_n},\bfT_{K_n},\sigma [K_n]$
+			Entire history & $\alpha,\phi,\bfPsi_{K_n}$ \\
+			Vertex order & $\alpha,\phi,\bfPsi_{K_n}, \bfT_{K_n}$ \\
+			Snapshot & $\alpha,\phi,\bfPsi_{K_n},\bfT_{K_n},\sigma [K_n]$
 		\end{tabular}
 	\end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Sampling $\bfPsi$}
-
-If $\bfee_n$ or $\bfd_{K_n}$ observed
-\begin{align*}
-	p_{\alpha, \phi}(\bfPsi_{K_n}, \bfee_n | \bfT_{K_n}, \bfd_{K_n}) &\propto \prod_{j=1}^{K_n} &&\Psi_j ^{ - \alpha} (1-\Psi_j)^{T_j - (j-1)\alpha - 1} \\
-	&&&\cdot \prod_{j=1}^{K_n} \Psi_j^{d_{j,n}-1}(1-\Psi_j)^{\bar{d}_{j-1,n} - T_j}\\
-	&\propto \prod_{j=1}^{K_n} &&\Psi_j ^{d_{j,n} - \alpha -1} (1-\Psi_j)^{\bar{d}_{j-1,n} - (j-1)\alpha - 1}
-\end{align*}
-where
-\begin{equation*}
-\bar{d}_{j,n} = \sum_{i=1}^j d_{j,n}.
-\end{equation*}
-
-\end{frame}
-
-\begin{frame}
 	\frametitle{Sampling $\bfPsi$}
-	Spot a closed form for $\bfPsi$
+	Beta prior on $\Psi_j$, plus recursive scaling --
 	\begin{equation*}
 	\Psi_j \mid \bfee_n, \bfPsi_{\setminus j} \sim \text{Beta}(d_{j,n} - \alpha, \bar{d}_{j-1,n} - (j-1)\alpha) \;,
 	\end{equation*}
@@ -627,28 +339,15 @@ where
 \begin{frame}
 	\frametitle{Sampling $\alpha, \phi$}
 	\begin{itemize}
-		\item Place priors on $\alpha, \phi$
-		\item Left with one-dimensional unnormalized density for $\alpha$ and MCMC is applicable
-		\item For $\phi$, depends on $\Lambda_\phi$. Our experiments used conjugacy or slice sampling.
+		\item For $\alpha$, one-dimensional unnormalized density
+		\item For $\phi$, depends on family. Our experiments used conjugacy or slice sampling.
 	\end{itemize}
 
 \end{frame}
 
 \begin{frame}
 	\frametitle{Sampling $\bfT$}
-	Assume
-	\begin{align*}
-	\aDist^{\phi}(\bfT_k) = \delta_{T_1}(1) \prod_{j=2}^k \aDist_j^{\phi}(\Delta_j | T_{j-1}) \;,
-	\end{align*}
-	support of $T_j - T_{j-1} | T_{\backslash j}$ is
-	\begin{equation*}
-		\{ 1, ..., \min(T_{j+1} - T_{j-1} - 1, \bar{d}_{j-1} - T_{j-1} + 1)  \}
-	\end{equation*}
-	and we can compute each probability
-	\begin{align*}
-		p_{\alpha, \phi}(T_j - T_{j-1} = s | \bfT_{\backslash j} , \bfd_{K}) \propto &\  \Lambda_j^\phi(s|T_{j-1})\Lambda_{j+1}^\phi (T_{j+1}-T_{j-1} - s) \\
-		&\cdot \binom{\bar{d}_j - T_{j-1} - s}{d_j - 1}.
-	\end{align*}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/tsampling}
 	
 \end{frame}
 
@@ -657,20 +356,13 @@ where
 
 	\begin{itemize} 
 	\item Use Metropolis-Hastings with swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
-	
-	\item Ratio of joints can be easily computed in terms of $\Gamma$ function.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Point estimation}
-	\begin{itemize} 
-	
-		\item Factorization $p_{\alpha, \phi}(\bfee_n) = p_\alpha (\bfee_n | \bfT_{K_n})\Lambda_\phi(\bfT_{K_n})$ 
-
-		\item Learn $\alpha$ separately from $\phi$ using standard optimization
-	
-		\item We have explicit formulae for MLE/MAP estimates for $\bfPsi$
+	\begin{itemize}
+		\item MLE/MAP estimation for $\alpha, \phi$ by optimizing unnormalized density
 	\end{itemize}
 \end{frame}
 
@@ -687,8 +379,8 @@ where
 \begin{frame}
 	\frametitle{Synthetic data}
 	\begin{itemize}
-		\item Simulate 500 edges from the prior with fixed $\alpha$, $\Lambda_\phi$ 
-		\item Either $\PYP$ or $\Geom$
+		\item Simulate 500 edges from the prior with fixed $\alpha$ 
+		\item Arrivals either $\PYP$ or $\Geom$
 		\item Observe final snapshot of the graph only
 	\end{itemize}
 \end{frame}
@@ -702,23 +394,23 @@ where
 		\begin{center}
 			\resizebox{1.0\textwidth}{!}{
 				\begin{tabular}{lllll}
-					Gen. arrival distn. & Inference model & $|\hat{\alpha} - \alpha^*|$ & $|\mathbf{\hat{S}} - \mathbf{S^*}|$ & Pred. log-lik.  \\
+					Gen. arrival distn. & Inference model & $|\hat{\alpha} - \alpha^*|$ & Pred. log-lik.  \\
 					\hline
-					$\PYP(1.0,0.75)$ &  $(\tau,\PYP(\theta,\tau))$ &  \textbf{0.046 $\pm$ 0.002}  &  \textbf{28.5 $\pm$ 0.7}  & -\textbf{2637.0 $\pm$ 0.1}  \\ 
+					$\PYP(1.0,0.75)$ &  $(\tau,\PYP(\theta,\tau))$ &  \textbf{0.046 $\pm$ 0.002}   & -\textbf{2637.0 $\pm$ 0.1}  \\ 
 					
-					$\PYP(1.0,0.75)$  &  $(\alpha,\Geom(\beta))$  &  {0.049 $\pm$ 0.004}  &  66.8 $\pm$ 1.2  & -2660.5 $\pm$ 0.7  \\ 
+					$\PYP(1.0,0.75)$  &  $(\alpha,\Geom(\beta))$  &  {0.049 $\pm$ 0.004} & -2660.5 $\pm$ 0.7  \\ 
 					\hline
 					
-					$\Geom(0.25)$ & $(\tau,\PYP(\theta,\tau))$ &  0.086 $\pm$ 0.002  &  56.6 $\pm$ 1.3  & -2386.8 $\pm$ 0.1  \\  
+					$\Geom(0.25)$ & $(\tau,\PYP(\theta,\tau))$ &  0.086 $\pm$ 0.002   & -2386.8 $\pm$ 0.1  \\  
 					
-					$\Geom(0.25)$ & $(\alpha,\Geom(\beta))$ &  \textbf{0.043 $\pm$ 0.003}  &  \textbf{24.8 $\pm$ 0.8}  & -\textbf{2382.6 $\pm$ 0.2}  \\ 
+					$\Geom(0.25)$ & $(\alpha,\Geom(\beta))$ &  \textbf{0.043 $\pm$ 0.003}  & -\textbf{2382.6 $\pm$ 0.2}  \\ 
 					
 					\end{tabular}
 					}
 				\end{center}
 			\end{table}
 			
-where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
+% where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 \end{frame}
 
 \begin{frame}
@@ -752,15 +444,6 @@ where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 	\begin{itemize}
 		\item Most expensive Gibss update is for $\bfT$
 	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Large scale real data experiments}
-	\begin{itemize}
-		\item MLE point estimation for SNAP datasets
-		\item Predictive log-likelihood
-	\end{itemize}
-	
 \end{frame}
 
 \begin{frame}
@@ -867,32 +550,6 @@ where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 		\end{table}
 	\end{frame}
 	
-\begin{frame}
-	\frametitle{MLEs for SNAP datasets}
-	These datasets may lack sparsity
-	\begin{table}[!ht]
-		\begin{center}
-			\color{lightgray}{
-				\resizebox{1.05\textwidth}{!}{
-					\begin{tabular}{llll | lllllll}
-						\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{\color{black}{Coupled $\PYP(\theta,\alpha)$}}  & &  \multicolumn{2}{c}{\color{black}{Uncoupled $\PYP(\theta,\tau)$}} &  & \multicolumn{3}{c}{\color{black}{$\Geom(\geom)$}}                             \\
-						\cline{2-4} \cline{6-7} \cline{9-11}
-						& $(\hat{\theta},\hat{\alpha})$ & \color{black}{$\hat{\eta}$}           & Pred. l-l.            & $\hat{\alpha}$    & $(\hat{\theta},\hat{\tau})$ & Pred. l-l.     &     & $\hat{\beta}$  & $\hat{\eta}$   & Pred. l-l.                             \\
-						\hline
-						Ask Ubuntu  & (18080, 0.25) & 1.25   & -3.707e6              & -2.54            & (-0.99, 0.99)    & -3.678e6  &   &  0.083 & 2.32    & \textbf{-3.678e6}                         \\
-						\color{black}{UCI social network} & \color{black}{(320.4, 4.4e-11)} & \color{black}{--}   & -1.600e5            & -4.98             & (5.50, 0.52)     & \textbf{-1.595e6}   &  & 0.016  & 2.10  & -1.596e5                    \\
-						\color{black}{EU email}   & \color{black}{(113.6, 2.5e-14)}  & \color{black}{--}    & \textbf{-8.06e5}              & -1.86              & (113.6, 9.2e-10)      & \textbf{-8.06e5}  &   & 0.001  & 2.00   & -8.07e5                     \\
-						Math Overflow & (2575, 0.15) & 1.15  & -1.685e6              & -6.62           & (-0.97, 0.997)    & -1.670e6 &    & 0.025  & 2.19   & \textbf{-1.670e6}                \\
-						Stack Overflow & (297600, 0.11) & 1.11 & -3.358e8             & -8.94            & (-1.0, 1.0)      &  -3.333e8  &    &  0.020  & 2.21   & \textbf{-3.333e8}                 \\
-						Super User  & (20640, 0.24) & 1.24  & -5.855e6            & -4.19          & (-0.996, 1.0)      &  \textbf{-5.775e6}   &  & 0.067 & 2.37    & -5.775e6              \\
-						Wikipedia talk pages  & (14870, 0.54) & 1.54  & -3.074e7          & -0.25            & (-1.0, 1.0)   & \textbf{-3.066e7}  &   & 0.073  & 2.10   & -3.066e7                   
-					\end{tabular}
-				}}
-			\end{center}
-			\vspace*{-\baselineskip}
-		\end{table}
-	\end{frame}
-	
 %\begin{frame}
 %	\frametitle{MLEs for SNAP datasets}
 %	Though not for all datasets
@@ -932,8 +589,8 @@ where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 	\begin{itemize}
 		\item Scalability of inference
 		\begin{itemize}
-			\item Metroplis-Hastings
-			\item variational inference \cite{linderman2017}
+			\item Metropolis-Hastings to update $\bfT$ altogether
+			\item Variational inference for $\bfT$ \cite{linderman2017}
 		\end{itemize}
 		\item Recency-weighted preferential attachment
 	\end{itemize}
@@ -943,23 +600,6 @@ where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 	\frametitle{References}
 	\tiny{\bibliographystyle{unsrt}
 	\bibliography{refs}}
-\end{frame}
-
-\begin{frame}
-	\textbf{Theorem} Under exchangeable models, $K_n = o(n)$. \\
-	\textit{Proof}
-	\begin{align*}
-	\prob (K_n / n \to 0) &= \bbE[\prob(K_n/n \to 0 \mid \text{paintbox})] \text{ by Paintbox / de Finetti}
-	\end{align*}
-	Enough to show $\bbE[K_n | \text{paintbox}]/n \to 0$.
-	We have
-	\begin{align*}
-	\bbE[K_n] &= \bbE\left[ \sum_j \indicator (\text{visited } j \text{ by }n) \right]\\
-	&=\sum_j \prob(\text{visited } j \text{ by }n) \text{ by Monotone Convergence} \\
-	&\le \sum_{j: P_j > 1/\sqrt{n}} 1 + \sum_{j: P_j \le 1/\sqrt{n}} nP_j \text{ by Bonferroni}\\
-	&\le \sqrt{n} + n \sum_{j: P_j \le 1/\sqrt{n}} P_j \\
-	&=o(n)
-	\end{align*}
 \end{frame}
 
 \end{document}
