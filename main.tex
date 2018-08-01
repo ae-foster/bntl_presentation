@@ -446,12 +446,12 @@
 	
 	\vspace{20pt}
 	
-	\textbf{For edge exchangeable models, $\eta \in (1, 2)$} \\
-	We will show $K_n = o(n)$. 
+	\textbf{For edge exchangeable models, $K_n = o(n)$} \\
+	\textit{Sketch proof}
 	\begin{align*}
-		\prob (K_n / n \to 0) &= \bbE[\prob(K_n/n \to 0 \mid \text{paintbox})] \\
-		&= 1
+		\prob (K_n / n \to 0) &= \bbE[\prob(K_n/n \to 0 \mid \text{paintbox})]
 	\end{align*}
+	Enough to show $\bbE[K_n | \text{paintbox}]/n \to 0$, which we can do directly from $P_j$ of the paintbox.
 	
 \end{frame}
 
@@ -943,6 +943,23 @@ where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 	\frametitle{References}
 	\tiny{\bibliographystyle{unsrt}
 	\bibliography{refs}}
+\end{frame}
+
+\begin{frame}
+	\textbf{Theorem} Under exchangeable models, $K_n = o(n)$. \\
+	\textit{Proof}
+	\begin{align*}
+	\prob (K_n / n \to 0) &= \bbE[\prob(K_n/n \to 0 \mid \text{paintbox})] \text{ by Paintbox / de Finetti}
+	\end{align*}
+	Enough to show $\bbE[K_n | \text{paintbox}]/n \to 0$.
+	We have
+	\begin{align*}
+	\bbE[K_n] &= \bbE\left[ \sum_j \indicator (\text{visited } j \text{ by }n) \right]\\
+	&=\sum_j \prob(\text{visited } j \text{ by }n) \text{ by Monotone Convergence} \\
+	&\le \sum_{j: P_j > 1/\sqrt{n}} 1 + \sum_{j: P_j \le 1/\sqrt{n}} nP_j \text{ by Bonferroni}\\
+	&\le \sqrt{n} + n \sum_{j: P_j \le 1/\sqrt{n}} P_j \\
+	&=o(n)
+	\end{align*}
 \end{frame}
 
 \end{document}
