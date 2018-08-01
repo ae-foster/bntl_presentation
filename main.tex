@@ -124,6 +124,11 @@
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet4}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Edges and vertices}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/edgevertex}
+\end{frame}
+
 
 \begin{frame}
 	\frametitle{Sparsity}
@@ -210,24 +215,6 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Yule-Simon Process}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ys}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Yule-Simon Process}
-	\includegraphics[angle=90,origin=c,scale=0.37]{fig/ys2}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Yule-Simon Process}
-	Asymptotic power law degree distribution with
-	\begin{equation*}
-		\eta = 1 + \frac{1}{1-\beta} > 2
-	\end{equation*}
-\end{frame}
-
-\begin{frame}
 	\frametitle{Pitman-Yor Process}
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/pyp}
 \end{frame}
@@ -238,7 +225,7 @@
 	\begin{equation*}
 		\eta = 1 + \tau \in (1, 2)
 	\end{equation*}
-	and $K_n = o(n)$
+	and sublinear sparsity
 \end{frame}
 
 
@@ -275,14 +262,6 @@
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
 \end{frame}
 
-\begin{frame}
-	\frametitle{BNTL properties}
-	\begin{itemize}
-		\item Collapsed sampler
-		\item Latent representation \textbf{not} from de Finetti
-	\end{itemize}
-\end{frame}
-
 
 \section{Sampling and inference}
 \begin{frame}
@@ -293,21 +272,6 @@
 		\item Vertex order
 		\item Snapshot
 	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Entire history}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/observeall}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Vertex order}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/observeorder}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Snapshot}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/observesnap}
 \end{frame}
 
 \begin{frame}
@@ -355,7 +319,8 @@
 	\frametitle{Sampling $\sigma[K_n]$}\
 
 	\begin{itemize} 
-	\item Use Metropolis-Hastings with swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
+	\item Initialise in descending degree order
+	\item Use Metropolis-Hastings with adjacent swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
 	\end{itemize}
 \end{frame}
 
@@ -442,7 +407,7 @@
 		\end{center}
 	\end{table}
 	\begin{itemize}
-		\item Most expensive Gibss update is for $\bfT$
+		\item Most expensive Gibbs update is for $\bfT$
 	\end{itemize}
 \end{frame}
 
