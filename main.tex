@@ -93,7 +93,6 @@
 \end{frame}
 
 \section{Background}
-\subsection{Temporal networks}
 
 \begin{frame}
 	\frametitle{Temporal networks}
@@ -102,6 +101,7 @@
 		\item Messages on WhatsApp
 		\item Posts + replies on StackOverflow
 	\end{itemize}
+	\pause
 	\vspace{15pt}
 	\textbf{Abstraction}
 	\begin{itemize}
@@ -246,9 +246,6 @@
 	\end{figure}
 \end{frame}
 
-
-
-\subsection{Asymptotic properties}
 \begin{frame}
 	\frametitle{Sparsity}
 	\begin{itemize}
@@ -264,31 +261,31 @@
 
 \begin{frame}
 	\frametitle{Power law degree distribution}
-	A power law distribution of exponent $\eta$ on $\{1, 2, ...\}$ has
+	Power law distribution of exponent $\eta$\
 	\begin{equation*}
 	p(d) \propto d^{-\eta} 
 	\end{equation*}
-	where $\eta > 1$.
+	where $\eta > 1$
 	
 	\pause
-	The asymptotic degree distribution has \textbf{power law tail with exponent} $\eta > 1$ if
+	Asymptotic degree distribution has \textbf{power law tail with exponent} $\eta$ if
 	\begin{align} 
 	\label{eq:plaw}
 	\frac{m_{n}(d)}{K_n} \xrightarrow[n\to\infty]{p} L(d)d^{-\eta} \;,
 	\end{align}
-	for slowly varying function $L(d)$.
+	for slowly varying $L(d)$
 	
 	\vspace{20pt}
 	\pause
-	\small{A slowly varying function $L$ has the property ${\lim_{x\to\infty} L(rx)/L(x) = 1}$ for all ${r>0}$ \cite{bingham1989}.}
+	\small{Slowly varying function has ${\lim_{x\to\infty} L(rx)/L(x) = 1}$ for all ${r>0}$ \cite{bingham1989}}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Power laws and sparsity}
 	We have
 	\begin{align*}
-		K_n &= \sum_{d=1}^\infty m_n(d), \\
-		n &= \sum_{d=1}^\infty d\, m_n(d).
+		K_n &= \sum_{d=1}^n m_n(d), \\
+		n &= \sum_{d=1}^n d\, m_n(d).
 	\end{align*}
 \end{frame}
 
@@ -297,7 +294,8 @@
 	Suppose $m_n(d)$ is power law distributed
 	\begin{align*}
 	K_n &= C \sum_{d=1}^n d^{-\eta}, \\
-	n &= C \sum_{d=1}^n d^{-\eta + 1} = K_n \, \frac{\sum_{d=1}^n d^{-\eta + 1}}{\sum_{d=1}^n d^{-\eta}}.
+	n &= C \sum_{d=1}^n d^{-\eta + 1} \\
+	&= K_n \, \frac{\sum_{d=1}^n d^{-\eta + 1}}{\sum_{d=1}^n d^{-\eta}}.
 	\end{align*}
 \end{frame}
 
@@ -316,7 +314,6 @@
 	For sparse graphs, $\sigma=0 \leftrightarrow \eta > 2$ and $\sigma > 0 \leftrightarrow \eta \in (1,2]$.
 \end{frame}
 
-\subsection{Empirical study}
 \begin{frame}
 	\frametitle{Empirical study}
 	\textbf{SNAP datasets} \cite{snapnets}
@@ -343,25 +340,28 @@
 \begin{frame}
 	\frametitle{Ask Ubuntu arrival process}
 	\begin{figure}[h]
-		\includegraphics[width=0.8\textwidth]{fig/arrival_times_askubuntu.pdf}
+		\includegraphics[width=1.0\textwidth]{fig/n_askubuntu_arrival.pdf}
 	\end{figure}
-	
+	%$\hat{\sigma}=-0.0990787$
+	$\hat{\sigma} = -0.099$
 \end{frame}
 
 \begin{frame}
 	\frametitle{Stack Overflow arrival process}
 	\begin{figure}[h]
-		\includegraphics[width=0.8\textwidth]{fig/arrival_times_stackoverflow.pdf}
+		\includegraphics[width=1.0\textwidth]{fig/n_stackoverflow_arrival.pdf}
 	\end{figure}
-	
+	% 0.01533192
+	$\hat{\sigma}=0.015$
 \end{frame}
 
 \begin{frame}
 	\frametitle{UCI social network arrival process}
 	\begin{figure}[h]
-		\includegraphics[width=0.8\textwidth]{fig/arrival_times_CollegeMsg.pdf}
+		\includegraphics[width=1.0\textwidth]{fig/n_CollegeMsg_arrival.pdf}
 	\end{figure}
-	
+	% $\sigma=0.95228934$
+	$\hat{\sigma} = 0.952$
 \end{frame}
 
 \begin{frame}
@@ -374,21 +374,13 @@
 	
 \end{frame}
 
-\begin{frame}
-	\frametitle{Todo}
-	\begin{itemize}
-		\item Recompile the images with better labels on the axes
-		\item Estimate $\sigma$ by linear regression
-	\end{itemize}
-	
-\end{frame}
 
-\subsection{Models}
 \begin{frame}
 	\frametitle{Models}
 	\begin{itemize}
 		\item Vertex exchangeable models do not give sparsity \cite{aldous1981} \cite{hoover1979}
 		\item Exchangeable point process models \cite{caronfox} have an independent notion of time
+		\pause
 		\item \textbf{Preferential attachment models} \cite{barabasi1999}
 		\item \textbf{Edge exchangeable models} \cite{CraneDempsey2017} \cite{cai2016}
 	\end{itemize}
@@ -430,7 +422,7 @@
 	Urn process
 	\begin{align*} 
 	\ee_{n+1} | \bfee_{n} &= \begin{cases}\begin{aligned}
-	K_{n+1} & \text{ w.p. } \frac{\theta + K_n \tau}{n + \theta}  \\
+	K_{n+1} & \text{ w.p. } \frac{\theta + K_n \tau}{\theta + n}  \\
 	& \\
 	j &\text{ w.p. } \frac{d_{j,n} - \tau}{\theta + n} 
 	\end{aligned}\end{cases}
@@ -556,13 +548,19 @@
 	\begin{itemize}
 		\item Collapsed sampler
 		\item Latent representation
-		\item But \textit{not} from de Finetti -- latents change with $K_n$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{BNTL properties}
+	\begin{itemize}
+		\item Collapsed sampler
+		\item Latent representation \textbf{not} from de Finetti
 	\end{itemize}
 \end{frame}
 
 
 \section{Sampling and inference}
-\subsection{Preliminaries}
 \begin{frame}
 	\frametitle{Sampling and inference}
 	\begin{itemize}
@@ -588,17 +586,16 @@
 			\textbf{Observation} & \textbf{Unobserved variables} \\
 			\hline
 			End of edge sequence $\bfee_n$ & $\alpha,\phi,\bfPsi_{K_n}$ \\
-			Vertex arrival-ordered graph & $\alpha,\phi,\bfPsi_{K_n}, \bfT_{K_n}$ \\
+			Vertex arrival-ordered graph $\bfd_{K_n}$ & $\alpha,\phi,\bfPsi_{K_n}, \bfT_{K_n}$ \\
 			Unlabeled graph & $\alpha,\phi,\bfPsi_{K_n},\bfT_{K_n},\sigma [K_n]$
 		\end{tabular}
 	\end{center}
 \end{frame}
 
-\subsection{Gibbs sampler}
 \begin{frame}
 \frametitle{Sampling $\bfPsi$}
 
-If $\bfee_n$ or $d_{K_n}$ observed
+If $\bfee_n$ or $\bfd_{K_n}$ observed
 \begin{align*}
 	p_{\alpha, \phi}(\bfPsi_{K_n}, \bfee_n | \bfT_{K_n}, \bfd_{K_n}) &\propto \prod_{j=1}^{K_n} &&\Psi_j ^{ - \alpha} (1-\Psi_j)^{T_j - (j-1)\alpha - 1} \\
 	&&&\cdot \prod_{j=1}^{K_n} \Psi_j^{d_{j,n}-1}(1-\Psi_j)^{\bar{d}_{j-1,n} - T_j}\\
@@ -640,16 +637,16 @@ where
 	\begin{align*}
 	\aDist^{\phi}(\bfT_k) = \delta_{T_1}(1) \prod_{j=2}^k \aDist_j^{\phi}(\Delta_j | T_{j-1}) \;,
 	\end{align*}
-	Support of $T_j - T_{j-1} | T_{\backslash j}$ is
+	support of $T_j - T_{j-1} | T_{\backslash j}$ is
 	\begin{equation*}
 		\{ 1, ..., \min(T_{j+1} - T_{j-1} - 1, \bar{d}_{j-1} - T_{j-1} + 1)  \}
 	\end{equation*}
 	and we can compute each probability
 	\begin{align*}
 		p_{\alpha, \phi}(T_j - T_{j-1} = s | \bfT_{\backslash j} , \bfd_{K}) \propto &\  \Lambda_j^\phi(s|T_{j-1})\Lambda_{j+1}^\phi (T_{j+1}-T_{j-1} - s) \\
-		&\cdot \binom{\bar{d}_j - T_{j-1} - s}{d_j - 1}
+		&\cdot \binom{\bar{d}_j - T_{j-1} - s}{d_j - 1}.
 	\end{align*}
-	and sample.
+	
 \end{frame}
 
 \begin{frame}
@@ -662,21 +659,28 @@ where
 	\end{itemize}
 \end{frame}
 
-\subsection{Point estimation}
 \begin{frame}
 	\frametitle{Point estimation}
 	\begin{itemize} 
 	
 		\item Factorization $p_{\alpha, \phi}(\bfee_n) = p_\alpha (\bfee_n | \bfT_{K_n})\Lambda_\phi(\bfT_{K_n})$ 
 
-		\item Learn $\alpha$ separately from $\phi$ using standard optimization (low dimensional)
+		\item Learn $\alpha$ separately from $\phi$ using standard optimization
 	
 		\item We have explicit formulae for MLE/MAP estimates for $\bfPsi$
 	\end{itemize}
 \end{frame}
 
 \section{Experiments}
-\subsection{Inference}
+\begin{frame}
+	\frametitle{Experiments}
+	\begin{itemize}
+		\item Synthetic data -- parameter recovery
+		\item Scaling in $n$
+		\item Point estimation with massive graphs
+	\end{itemize}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Synthetic data}
 	\begin{itemize}
@@ -714,7 +718,6 @@ where
 where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 \end{frame}
 
-\subsection{Scalability of Gibbs sampler}
 \begin{frame}
 	\frametitle{Scalability of Gibbs sampler}
 	\begin{itemize}
@@ -748,7 +751,6 @@ where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 	\end{itemize}
 \end{frame}
 
-\subsection{Large scale real data experiments}
 \begin{frame}
 	\frametitle{Large scale real data experiments}
 	\begin{itemize}
@@ -889,7 +891,6 @@ where $\mathbf{S} := \frac{1}{K_n - 1} \sum_{j>1} (\bar{d}_{j-1} - T_j)$
 %		\end{table}
 %	\end{frame}
 
-\section{Conclusion}
 \begin{frame}
 	\frametitle{Conclusion}
 	\begin{itemize}
