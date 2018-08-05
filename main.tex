@@ -96,10 +96,9 @@
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	\textbf{Examples}
+	\textbf{Example}
 	\begin{itemize}
-		\item Messages between people (email, WhatsApp, ...)
-		\item Posts + replies on StackOverflow
+		\item Messages sent between people over time
 	\end{itemize}
 	
 \end{frame}
@@ -111,7 +110,7 @@
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet2}
+	\includegraphics[angle=270,origin=c,scale=0.4]{fig/socialnet2}
 \end{frame}
 
 \begin{frame}
@@ -132,16 +131,7 @@
 
 \begin{frame}
 	\frametitle{Sparsity}
-	\includegraphics[angle=90,origin=c,scale=0.37]{fig/sparsity}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Power law degree distribution}
-	Power law distribution of exponent $\eta$\
-	\begin{equation*}
-	p(d) \propto d^{-\eta} 
-	\end{equation*}
-	where $\eta > 1$
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/sparsity}
 \end{frame}
 
 \begin{frame}
@@ -158,22 +148,178 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Models}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models1}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Models}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models2}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Models}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models3}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Models}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models4}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee1}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee2}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee3}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Paintbox representation}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/paintbox}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Paintbox representation}
+	Consequence\begin{itemize}
+		\item Edge exchangeable models have sublinear sparsity
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Models}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models5}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Models}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models6}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Models}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models7}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beta Neutral-to-the-left Model \cite{Bloem2017}}
+	\vspace{2pt}
+	\includegraphics[angle=90,origin=c,scale=0.37]{fig/bntl}
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Hierarchical representation of BNTL process}
+%	\includegraphics[angle=90,origin=c,scale=0.4]{fig/bntllatent1}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Hierarchical representation of BNTL process}
+%	\includegraphics[angle=90,origin=c,scale=0.4]{fig/bntllatent2}
+%\end{frame}
+
+\begin{frame}
+	\frametitle{Latent representation}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
+\end{frame}
+
+
+\section{Sampling and inference}
+
+\begin{frame}
+	\frametitle{Available data}
+	\begin{center}
+		\begin{tabular}{ll}
+			\textbf{Observation} & \textbf{Unobserved variables} \\
+			\hline
+			Entire history & $\alpha,\phi,\bfPsi$ \\
+			Degrees in arrival order & $\alpha,\phi,\bfPsi, \bfT$ \\
+			Snapshot & $\alpha,\phi,\bfPsi,\bfT,\sigma$
+		\end{tabular}
+	\end{center}
+	\begin{itemize}
+		\item $\alpha$ = BTNL parameter $\in (-\infty, 1)$
+		\item $\phi$ = arrival distribution parameters
+		\item $\bfPsi$ = latent sociabilities
+		\item $\bfT$ = arrival times
+		\item $\sigma$ = arrival order
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gibbs structure}
+	The joint density has \textbf{Gibbs structure}
+	\begin{equation*}
+		p(\text{graph}|\bfT) = \frac{\Gamma(d_1 - \alpha)}{\Gamma(n - K\alpha)}\prod_{j=2}^K \frac{\Gamma(T_j - j\alpha)\Gamma(d_j - \alpha)}{\Gamma(T_j - 1 - (j-1)\alpha)\Gamma(1-\alpha)}
+	\end{equation*}
+	\begin{itemize}
+		\item $T_j$ = arrival time of vertex $j$
+		\item $d_j$ = degree of vertex $j$
+		\item $K$ = \#vertices
+		\item $n$ = \#edges
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sampling $\bfPsi$}
+	Beta prior on $\Psi_j$, plus Gibbs structure, give
+	\begin{equation*}
+	\Psi_j \mid \text{graph}, \bfPsi_{\setminus j} \sim \text{Beta}(d_{j} - \alpha, \bar{d}_{j-1} - (j-1)\alpha) \;,
+	\end{equation*}
+	\small{where $\bar{d}_j = \sum_{i=1}^j d_i$}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sampling $\alpha,\phi$}
+	\begin{itemize}
+		\item One-dimensional unnormalized density for $\alpha$
+		\item For $\phi$ depends on arrival distribution family
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sampling $\bfT$}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/tsampling}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sampling $\sigma$}\
+
+	\begin{itemize} 
+	\item Initialise in descending degree order
+	\item Use Metropolis-Hastings with adjacent swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Point estimation}
+	\begin{itemize}
+		\item Decompose $p_{\alpha,\phi}(\text{graph}) = p_\phi(\bfT)p_\alpha(\text{graph}|\bfT)$
+		\item MLE/MAP estimation for $\alpha$ by optimizing unnormalized density
+	\end{itemize}
+\end{frame}
+
+\section{Experiments}
+\begin{frame}
 	\frametitle{Empirical study}
-	\textbf{SNAP datasets} \cite{snapnets}
 	\begin{table}[b]
 		% \vspace*{-\baselineskip}
 		\label{tab:datasets}
 		\begin{center}
 			\begin{tabular}{lll}
-				Dataset                 & \# of vertices   & \# of edges    \\
+				SNAP dataset \cite{snapnets} & \# of vertices   & \# of edges    \\
 				\hline
 				Ask Ubuntu    & 159,316   & 964,437    \\
 				UCI social network   & 1,899     & 20,296     \\
-				EU email        & 986       & 332,334    \\
-				Math Overflow & 24,818    & 506,550    \\
-				Stack Overflow           & 2,601,977 & 63,497,050 \\
-				Super User    & 194,085   & 1,443,339  \\
-				Wikipedia talk pages    & 1,140,149 & 7,833,140 \\
+				\vdots & \vdots & \vdots
 			\end{tabular}
 		\end{center}
 	\end{table}
@@ -198,143 +344,20 @@
 	% $\hat{\sigma} = 0.952$
 \end{frame}
 
-\begin{frame}
-	\frametitle{Ask Ubuntu degree distribution}
-	\begin{figure}[h]
-		\includegraphics[width=0.8\textwidth]{fig/nodes_degre_power_law_askubuntu.pdf}
-	\end{figure}
-	
-	$\hat{\eta} = 2.14$ estimated using technique of \cite{clauset}
-	
-\end{frame}
+%\begin{frame}
+%	\frametitle{Ask Ubuntu degree distribution}
+%	\begin{figure}[h]
+%		\includegraphics[width=0.8\textwidth]{fig/nodes_degre_power_law_askubuntu.pdf}
+%	\end{figure}
+%	
+%	$\hat{\eta} = 2.14$ estimated using technique of \cite{clauset}
+%	
+%\end{frame}
 
-
-\begin{frame}
-	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Pitman-Yor Process}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/pyp}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Pitman-Yor Process}
-	Asymptotic power law degree distribution with
-	\begin{equation*}
-		\eta = 1 + \tau \in (1, 2)
-	\end{equation*}
-	and sublinear sparsity
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
-	``The probability of all orderings of edge arrivals is the same''
-	
-	\vspace{20pt}
-	\begin{itemize}
-		\item Sublinear sparsity
-		\item $\eta \in (1,2)$
-	\end{itemize}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Beta Neutral-to-the-left Process \cite{Bloem2017}}
-	\vspace{2pt}
-	\includegraphics[angle=90,origin=c,scale=0.37]{fig/bntl}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Models -- again}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Hierarchical representation of BNTL process}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/bntllatent}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Recursive scaling of BNTL latents}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
-\end{frame}
-
-
-\section{Sampling and inference}
-\begin{frame}
-	\frametitle{Sampling and inference}
-	Three observation cases
-	\begin{itemize}
-		\item Entire history
-		\item Vertex order
-		\item Snapshot
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Observation cases}
-	\begin{center}
-		\begin{tabular}{ll}
-			\textbf{Observation} & \textbf{Unobserved variables} \\
-			\hline
-			Entire history & $\alpha,\phi,\bfPsi_{K_n}$ \\
-			Vertex order & $\alpha,\phi,\bfPsi_{K_n}, \bfT_{K_n}$ \\
-			Snapshot & $\alpha,\phi,\bfPsi_{K_n},\bfT_{K_n},\sigma [K_n]$
-		\end{tabular}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Sampling $\bfPsi$}
-	Beta prior on $\Psi_j$, plus recursive scaling --
-	\begin{equation*}
-	\Psi_j \mid \bfee_n, \bfPsi_{\setminus j} \sim \text{Beta}(d_{j,n} - \alpha, \bar{d}_{j-1,n} - (j-1)\alpha) \;,
-	\end{equation*}
-	
-	\begin{itemize}
-		\item For fixed $\alpha$, we have our posterior
-		\item Learning other variables, we have a Gibbs update
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Sampling $\alpha, \phi$}
-	\begin{itemize}
-		\item For $\alpha$, one-dimensional unnormalized density
-		\item For $\phi$, depends on family. Our experiments used conjugacy or slice sampling.
-	\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-	\frametitle{Sampling $\bfT$}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/tsampling}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Sampling $\sigma[K_n]$}\
-
-	\begin{itemize} 
-	\item Initialise in descending degree order
-	\item Use Metropolis-Hastings with adjacent swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Point estimation}
-	\begin{itemize}
-		\item MLE/MAP estimation for $\alpha, \phi$ by optimizing unnormalized density
-	\end{itemize}
-\end{frame}
-
-\section{Experiments}
 \begin{frame}
 	\frametitle{Experiments}
 	\begin{itemize}
+		\item I DON'T KNOW
 		\item Synthetic data -- parameter recovery
 		\item Scaling in $n$
 		\item Point estimation with massive graphs
