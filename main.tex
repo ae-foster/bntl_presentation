@@ -302,13 +302,27 @@
 	\frametitle{Gibbs structure}
 	The joint density has \textbf{Gibbs structure}
 	\begin{equation*}
+	p(\text{graph}|\bfT) = \prod_{j=1}^K p(\text{choose }j\ d_j\text{ times out of } n - T_j)
+	\end{equation*}
+	\begin{itemize}
+		\item $K$ = \#vertices
+		\item $n$ = \#edges
+		\item $d_j$ = degree of vertex $j$
+		\item $T_j$ = arrival time of vertex $j$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gibbs structure}
+	Explicitly
+	\begin{equation*}
 	p(\text{graph}|\bfT) = \frac{\Gamma(d_1 - \alpha)}{\Gamma(n - K\alpha)}\prod_{j=2}^K \frac{\Gamma(T_j - j\alpha)\Gamma(d_j - \alpha)}{\Gamma(T_j - 1 - (j-1)\alpha)\Gamma(1-\alpha)}
 	\end{equation*}
 	\begin{itemize}
-		\item $T_j$ = arrival time of vertex $j$
-		\item $d_j$ = degree of vertex $j$
 		\item $K$ = \#vertices
 		\item $n$ = \#edges
+		\item $d_j$ = degree of vertex $j$
+		\item $T_j$ = arrival time of vertex $j$
 	\end{itemize}
 \end{frame}
 
