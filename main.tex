@@ -99,6 +99,7 @@
 	\textbf{Example}
 	\begin{itemize}
 		\item Messages sent between people over time
+		\item Protein-protein interactions
 	\end{itemize}
 	
 \end{frame}
@@ -125,6 +126,7 @@
 
 \begin{frame}
 	\frametitle{Edges and vertices}
+	TODO: break picture into 4
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/edgevertex}
 \end{frame}
 
@@ -140,12 +142,59 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sparity and power law}
+	\frametitle{Sparsity and power law}
 	\begin{align*}
 	\textbf{Sublinear } \text{sparsity} & \quad \iff \quad  \eta \in (1,2) \\
 	\textbf{Linear } \text{sparsity} & \quad \iff \quad \eta > 2
 	\end{align*}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Empirical study}
+	\begin{table}[b]
+		% \vspace*{-\baselineskip}
+		\label{tab:datasets}
+		\begin{center}
+			\begin{tabular}{lll}
+				SNAP dataset \cite{snapnets} & \# of vertices   & \# of edges    \\
+				\hline
+				Ask Ubuntu    & 159,316   & 964,437    \\
+				UCI social network   & 1,899     & 20,296     \\
+				\vdots & \vdots & \vdots
+			\end{tabular}
+		\end{center}
+	\end{table}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ask Ubuntu}
+	\begin{figure}[h]
+		\includegraphics[width=1.0\textwidth]{fig/n_askubuntu_arrival.pdf}
+	\end{figure}
+	%$\hat{\sigma}=-0.0990787$
+	%$\hat{\sigma} = -0.099$
+\end{frame}
+
+\begin{frame}
+	\frametitle{UCI social network}
+	\begin{figure}[h]
+		\includegraphics[width=1.0\textwidth]{fig/n_CollegeMsg_arrival.pdf}
+	\end{figure}
+	% $\sigma=0.95228934$
+	% $\hat{\sigma} = 0.952$
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Ask Ubuntu degree distribution}
+%	\begin{figure}[h]
+%		\includegraphics[width=0.8\textwidth]{fig/nodes_degre_power_law_askubuntu.pdf}
+%	\end{figure}
+%	
+%	$\hat{\eta} = 2.14$ estimated using technique of \cite{clauset}
+%	
+%\end{frame}
+
 
 \begin{frame}
 	\frametitle{Models}
@@ -232,6 +281,36 @@
 
 
 \section{Sampling and inference}
+\begin{frame}
+	\frametitle{Sampling and inference}
+	Why a paper on sampling and inference for BNTL models?
+	\pause
+	\begin{itemize}
+		\item Inference is notoriously difficult for \textit{non-exchangeable} structures
+		\item Need to identify \textit{exchangeable substructures}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Exchangeable substructure}
+	\begin{center}
+		\resizebox{\textwidth}{!}{\input{fig/cons_exch}}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gibbs structure}
+	The joint density has \textbf{Gibbs structure}
+	\begin{equation*}
+	p(\text{graph}|\bfT) = \frac{\Gamma(d_1 - \alpha)}{\Gamma(n - K\alpha)}\prod_{j=2}^K \frac{\Gamma(T_j - j\alpha)\Gamma(d_j - \alpha)}{\Gamma(T_j - 1 - (j-1)\alpha)\Gamma(1-\alpha)}
+	\end{equation*}
+	\begin{itemize}
+		\item $T_j$ = arrival time of vertex $j$
+		\item $d_j$ = degree of vertex $j$
+		\item $K$ = \#vertices
+		\item $n$ = \#edges
+	\end{itemize}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Available data}
@@ -253,19 +332,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Gibbs structure}
-	The joint density has \textbf{Gibbs structure}
-	\begin{equation*}
-		p(\text{graph}|\bfT) = \frac{\Gamma(d_1 - \alpha)}{\Gamma(n - K\alpha)}\prod_{j=2}^K \frac{\Gamma(T_j - j\alpha)\Gamma(d_j - \alpha)}{\Gamma(T_j - 1 - (j-1)\alpha)\Gamma(1-\alpha)}
-	\end{equation*}
-	\begin{itemize}
-		\item $T_j$ = arrival time of vertex $j$
-		\item $d_j$ = degree of vertex $j$
-		\item $K$ = \#vertices
-		\item $n$ = \#edges
-	\end{itemize}
-\end{frame}
+
 
 \begin{frame}
 	\frametitle{Sampling $\bfPsi$}
@@ -287,6 +354,7 @@
 
 \begin{frame}
 	\frametitle{Sampling $\bfT$}
+	TODO remove $\bar{d}$ from this picture
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/tsampling}
 \end{frame}
 
@@ -303,57 +371,11 @@
 	\frametitle{Point estimation}
 	\begin{itemize}
 		\item Decompose $p_{\alpha,\phi}(\text{graph}) = p_\phi(\bfT)p_\alpha(\text{graph}|\bfT)$
-		\item MLE/MAP estimation for $\alpha$ by optimizing unnormalized density
+		\item MLE/MAP estimation for $\alpha$ by optimizing density
 	\end{itemize}
 \end{frame}
 
 \section{Experiments}
-\begin{frame}
-	\frametitle{Empirical study}
-	\begin{table}[b]
-		% \vspace*{-\baselineskip}
-		\label{tab:datasets}
-		\begin{center}
-			\begin{tabular}{lll}
-				SNAP dataset \cite{snapnets} & \# of vertices   & \# of edges    \\
-				\hline
-				Ask Ubuntu    & 159,316   & 964,437    \\
-				UCI social network   & 1,899     & 20,296     \\
-				\vdots & \vdots & \vdots
-			\end{tabular}
-		\end{center}
-	\end{table}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Ask Ubuntu}
-	\begin{figure}[h]
-		\includegraphics[width=1.0\textwidth]{fig/n_askubuntu_arrival.pdf}
-	\end{figure}
-	%$\hat{\sigma}=-0.0990787$
-	%$\hat{\sigma} = -0.099$
-\end{frame}
-
-\begin{frame}
-	\frametitle{UCI social network}
-	\begin{figure}[h]
-		\includegraphics[width=1.0\textwidth]{fig/n_CollegeMsg_arrival.pdf}
-	\end{figure}
-	% $\sigma=0.95228934$
-	% $\hat{\sigma} = 0.952$
-\end{frame}
-
-%\begin{frame}
-%	\frametitle{Ask Ubuntu degree distribution}
-%	\begin{figure}[h]
-%		\includegraphics[width=0.8\textwidth]{fig/nodes_degre_power_law_askubuntu.pdf}
-%	\end{figure}
-%	
-%	$\hat{\eta} = 2.14$ estimated using technique of \cite{clauset}
-%	
-%\end{frame}
-
 \begin{frame}
 	\frametitle{Experiments}
 	\begin{itemize}
@@ -578,9 +600,8 @@
 		\item Scalability of inference
 		\begin{itemize}
 			\item Metropolis-Hastings to update $\bfT$ altogether
-			\item Variational inference for $\bfT$ \cite{linderman2017}
+			\item Variational inference for $\sigma$
 		\end{itemize}
-		\item Recency-weighted preferential attachment
 	\end{itemize}
 \end{frame}
 

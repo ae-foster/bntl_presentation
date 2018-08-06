@@ -1,0 +1,31 @@
+\begin{tikzpicture}[>=stealth]%[transform canvas={xshift=-0.5cm}]
+    % \node[font=\scriptsize] at (-8.5,0.5) {$t$} ;
+    % row 1
+    \draw[shift={(-8.0,0)}] (-4pt,0) node[anchor=east,font=\scriptsize] {$1$} -- (4pt,0) {};
+    % \draw[dotted,shift={(-8.0,0.0)},color=gray] (0,0) -- (8.0,0) {};
+    \draw[densely dashed] (-8.0,0.5) node[anchor=south,font=\scriptsize] {$t_1=1$} -- (-8.0,-3.5) ;
+    \foreach \x/\xtext/\xco in {0.0//red, 0.1//red, 0.2//red, 0.3//red, 0.6//red, 0.9//red, 1.3//red, 1.5//red, 1.7//red, 1.9//red, 2.2//red}
+    	\fill[color=\xco] (-8.0+3*\x,0) circle (2pt) node[anchor=south,font=\scriptsize,color=black] {$\xtext$};
+    \draw[densely dotted,color=red] (0.1,0.25) -- (-8.1,0.25) -- (-8.1,-0.25) -- (0.1,-0.25) ;
+    % row 2
+    \draw[shift={(-8.0,-1.0)}] (-4pt,0) node[anchor=east,font=\scriptsize] {$2$} -- (4pt,0) {};
+    % \draw[dotted,shift={(-8.0,-1.0)},color=gray] (0,0) -- (8.0,0) {};
+    \draw[densely dashed] (-8.0+1.2,0.5) node[anchor=south,font=\scriptsize] {$t_2$} -- (-8.0+1.2,-3.5) ;
+    \foreach \x/\xtext/\xco in {0.4//blue, 0.5//blue, 0.7//blue, 0.8//blue, 1.1//blue, 1.4//blue, 1.8//blue, 2.1//blue, 2.4//blue}
+    	\fill[color=\xco] (-8.0+3*\x,-1.0) circle (2pt) node[anchor=south,font=\scriptsize,color=black] {$\xtext$};
+    \draw[densely dotted,color=blue] (-8.1+1.4,0.25) -- (-8.1+1.4,-1.25) -- (0.1,-1.25) ;
+    % row 3
+    \draw[shift={(-8.0,-2.0)}] (-4pt,0) node[anchor=east,font=\scriptsize] {$3$} -- (4pt,0) {};
+    % \draw[dotted,shift={(-8.0,-2.0)},color=gray] (0,0) -- (8.0,0) {};
+    \draw[densely dashed] (-8.0+3.0,0.5) node[anchor=south,font=\scriptsize] {$t_3$} -- (-8.0+3.0,-3.5) ;
+    \foreach \x/\xtext/\xco in {1.0//green, 1.2//green, 2.3//green}
+    	\fill[color=\xco] (-8.0+3*\x,-2.0) circle (2pt) node[anchor=south,font=\scriptsize,color=black] {$\xtext$};
+    \draw[densely dotted,color=green] (-8.1+3.2,0.25) -- (-8.1+3.2,-2.25) -- (0.1,-2.25) ;
+    % row 4
+    \draw[shift={(-8.0,-3.0)}] (-4pt,0) node[anchor=east,font=\scriptsize] {$4$} -- (4pt,0) {};
+    % \draw[dotted,shift={(-8.0,-3.0)},color=gray] (0,0) -- (8.0,0) {};
+    \draw[densely dashed] (-8.0+4.8,0.5) node[anchor=south,font=\scriptsize] {$t_4$} -- (-8.0+4.8,-3.5) ;
+    \foreach \x/\xtext/\xco in {1.6//magenta, 2.0//magenta}%, 2.4//magenta}
+    	\fill[color=\xco] (-8.0+3*\x,-3.0) circle (2pt) node[anchor=south,font=\scriptsize,color=black] {$\xtext$};
+    \draw[densely dotted,color=magenta] (-8.1+5.0,0.25) -- (-8.1+5.0,-3.25) -- (0.1,-3.25) ;
+\end{tikzpicture}
