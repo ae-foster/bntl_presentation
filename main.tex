@@ -112,7 +112,7 @@
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	\textbf{Example}
+	\textbf{Examples}
 	\begin{itemize}
 		\item Messages sent between people over time
 		\item Protein-protein interactions
@@ -244,24 +244,24 @@
 				axis lines = left,
 				xlabel = {Number of edges},
 				ylabel = {Vertex i.d.},
-				xtick = {1,2,...,8},
+				xtick = {1,2,3,4},
 				ytick = {1,2,3},
 				xmin = 0,
-				xmax = 9,
+				xmax = 4.5,
 				ymax = 4,
 				ymin = 0,
 				style = thick
 			]
 			% \addplot+[ultra thick, const plot, no marks,color=darkblue] table [x index=0, y index=1]{\datatable};
 			% \draw (axis cs:1,0.5) -- (axis cs:2,0.5);
+			\only<1-4>{\fill[color=blueClj] (axis cs:.5,1) circle (5pt);}
 			\only<1-4>{\fill[color=blueClj] (axis cs:1,1) circle (5pt);}
-			\only<1-4>{\fill[color=blueClj] (axis cs:2,1) circle (5pt);}
-			\only<2-4>{\fill[color=orangeClj] (axis cs:3,2) circle (5pt);}
-			\only<2-4>{\fill[color=blueClj] (axis cs:4,1) circle (5pt);}
-			\only<3-4>{\fill[color=darkgreenClj] (axis cs:5,3) circle (5pt);}
-			\only<3-4>{\fill[color=blueClj] (axis cs:6,1) circle (5pt);}
-			\only<4>{\fill[color=orangeClj] (axis cs:7,2) circle (5pt);}
-			\only<4>{\fill[color=darkgreenClj] (axis cs:8,3) circle (5pt);}
+			\only<2-4>{\fill[color=orangeClj] (axis cs:1.5,2) circle (5pt);}
+			\only<2-4>{\fill[color=blueClj] (axis cs:2,1) circle (5pt);}
+			\only<3-4>{\fill[color=darkgreenClj] (axis cs:2.5,3) circle (5pt);}
+			\only<3-4>{\fill[color=blueClj] (axis cs:3,1) circle (5pt);}
+			\only<4>{\fill[color=orangeClj] (axis cs:3.5,2) circle (5pt);}
+			\only<4>{\fill[color=darkgreenClj] (axis cs:4,3) circle (5pt);}
 			\end{axis}
 		\end{tikzpicture}
 	  }
@@ -312,12 +312,12 @@
 				\addplot[color=blueClj,domain=0:50,style=ultra thick]{x};
 				\addplot[color=orangeClj,domain=0:50,style=ultra thick]{x^(0.9)};
 				\addplot[color=darkgreenClj,domain=0:50,style=ultra thick]{x^(0.5)};
-				\node[anchor=west] (sparse) at (axis cs:5,40){\normalsize Sparse: $\Theta(\text{\# edges}^{\sigma})$};
+				\node[anchor=west] (sparse) at (axis cs:5,40){\normalsize Sparse: $\Theta(\text{\#edges}^{\sigma})$};
 				\node (l1) at (axis cs:30,30){};
 				\node (l2) at (axis cs:30,21.35){};
 				\draw[->](sparse)--(l1);
 				\draw[->](sparse)--(l2);
-				\node[anchor=west] (dense) at (axis cs:20,10){\normalsize Dense: $O(\sqrt{\text{\# edges}})$};
+				\node[anchor=west] (dense) at (axis cs:20,10){\normalsize Dense: $O(\sqrt{\text{\#edges}})$};
 				\node[anchor=west] (sig1) at (axis cs:35,45){$\sigma=1$};
 				\node[anchor=west] (sig2) at (axis cs:35,22.5){$\frac{1}{2}<\sigma<1$};
 			\end{axis}
@@ -536,7 +536,7 @@
 	Consequences for edge exchangeable models:
 	\begin{itemize}
 		\item Rate of vertex arrival gets slower and slower \\
-			$\Rightarrow$ sublinear sparsity: \# vertices$=o(n)$
+			$\Rightarrow$ sublinear sparsity: \#vertices $=o(\text{\#edges})$
 		\item Edges pile up \\
 			$\Rightarrow$ linear scaling of degrees: $d_{j,n}=\Theta(n)$
 	\end{itemize}
@@ -602,7 +602,7 @@
 			\Edge[lw=2,bend=-30](v2n)(v3n)
 			\Edge[lw=2,bend=60](v4n)(v5n)
 			\Text[x=-5.5,y=-4]{\Large $G_{n+1}$}
-			\Text[x=-3,y=-6]{\Large $n+1=T_{K+1}\Rightarrow Z_{n+1}=K+1$}
+			\Text[x=-3,y=-6]{\Large $\text{New vertex}$}
 
 			% G_{n+1} without new vertex
 			\Vertex[size=0.5,color=blueClj,x=4,y=-4]{v1nn}
@@ -616,7 +616,7 @@
 			\Edge[lw=2,bend=-30](v2nn)(v3nn)
 			\Edge[lw=2](v4nn)(v2nn)
 			\Text[x=7,y=-4]{\Large $G_{n+1}$}
-			\Text[x=5,y=-6]{\Large $P[Z_{n+1}=j] \propto \text{deg}_{j,n}-\alpha$}
+			\Text[x=5,y=-6]{\Large $\prob[\rightarrow j] \propto \text{deg}_{j,n}-\alpha$}
 
 		\end{tikzpicture}
 	  }
@@ -985,17 +985,6 @@
 	\begin{itemize}
 		\item BNTL models are \textit{flexible}
 		\item BNTL models are \textit{tractable}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Future work}
-	\begin{itemize}
-		\item Scalability of inference
-		\begin{itemize}
-			\item Metropolis-Hastings to update $\bfT$ altogether
-			\item Variational inference for $\sigma$
-		\end{itemize}
 	\end{itemize}
 \end{frame}
 
