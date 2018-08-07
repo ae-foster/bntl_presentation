@@ -15,6 +15,9 @@
 \usepackage{tikz}
 \usetikzlibrary{fit}					% fitting shapes to coordinates
 \usetikzlibrary{backgrounds}	% drawing the background after the foreground
+\usetikzlibrary{arrows,shapes,positioning}
+\usepackage{tikz-network}
+\usepackage{pgfplots}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Shortcuts for this project
@@ -64,6 +67,18 @@
 	\mathrel{\scalebox{#1}[1]{$\sim$}}
 }
 
+\definecolor{darkgreenClj}{rgb}{0.25,.5,0.25}
+\definecolor{blueClj}{rgb}{0,0.33,0.66}
+\definecolor{redClj}{rgb}{0.66,0.0,0.0}
+\definecolor{purpleClj}{rgb}{0.33,0,0.66}
+\definecolor{cyanClj}{rgb}{0.0,0.5,0.5}
+\definecolor{orangeClj}{rgb}{0.75,0.35,0.0}
+\definecolor{grayClj}{rgb}{0.6,0.6,0.6}
+\definecolor{darkgrayClj}{rgb}{0.3,0.3,0.3}
+
+% useful function from: https://tex.stackexchange.com/questions/66465/how-to-get-actual-values-of-colour-theme-colours-in-beamer
+\newcommand{\extractRGB}[1]{\extractcolorspecs{#1}{\model}{\mycolor} \convertcolorspec{\model}{\mycolor}{RGB}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define footer contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,39 +122,238 @@
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet1}
+	\begin{center}
+	\resizebox{0.75\textwidth}{!}{
+		\begin{tikzpicture}
+			\Vertex[label=Adam, y=-2, size=1.5]{A}
+			\Vertex[label=Ben, x=4, y=-2, size=1.5]{B}
+			\Vertex[Pseudo, x=4, y=1]{P}
+			\Edge[bend=30,lw=2](A)(B)
+		\end{tikzpicture}
+	}
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	\includegraphics[angle=270,origin=c,scale=0.4]{fig/socialnet2}
+	\begin{center}
+	\resizebox{0.75\textwidth}{!}{
+		\begin{tikzpicture}
+			\Vertex[label=Adam, y=-2, size=1.5]{A}
+			\Vertex[label=Ben, x=4, y=-2, size=1.5]{B}
+			\Vertex[Pseudo, x=4, y=1]{P}
+			\Edge[bend=30,lw=2](A)(B)
+			\Edge[bend=-30,lw=2](A)(B)
+		\end{tikzpicture}
+	}
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet3}
+	\begin{center}
+	\resizebox{0.75\textwidth}{!}{
+		\begin{tikzpicture}
+			\Vertex[label=Adam, y=-2, size=1.5]{A}
+			\Vertex[label=Ben, x=4, y=-2, size=1.5]{B}
+			\Vertex[label={Yee Whye}, x=4, y=1, size=1.5]{Y}
+			\Edge[bend=30,lw=2](A)(B)
+			\Edge[bend=-30,lw=2](A)(B)
+			\Edge[lw=2](B)(Y)
+		\end{tikzpicture}
+	}
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Temporal networks}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet4}
+	\begin{center}
+	\resizebox{0.75\textwidth}{!}{
+		\begin{tikzpicture}
+			\Vertex[label=Adam, y=-2, size=1.5]{A}
+			\Vertex[label=Ben, x=4, y=-2, size=1.5]{B}
+			\Vertex[label={Yee Whye}, x=4, y=1, size=1.5]{Y}
+			\Vertex[label=Emile, y=1, size=1.5]{E}
+			\Vertex[Pseudo,label={?}, x=1.5, y=-0.5, fontsize=\Large]{Ghost}
+			\Edge[bend=30,lw=2](A)(B)
+			\Edge[bend=-30,lw=2](A)(B)
+			\Edge[lw=2](B)(Y)
+			\Edge[lw=2](E)(Ghost)
+		\end{tikzpicture}
+	}
+	\end{center}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Temporal networks}
+	\begin{center}
+	\resizebox{0.75\textwidth}{!}{
+		\begin{tikzpicture}
+			\Vertex[label=Adam, y=-2, size=1.5]{A}
+			\Vertex[label=Ben, x=4, y=-2, size=1.5]{B}
+			\Vertex[label={Yee Whye}, x=4, y=1, size=1.5]{Y}
+			\Vertex[label=Emile, y=1, size=1.5]{E}
+			\Edge[bend=30,lw=2](A)(B)
+			\Edge[bend=-30,lw=2](A)(B)
+			\Edge[lw=2](B)(Y)
+			\Edge[lw=2](E)(A)
+		\end{tikzpicture}
+	}
+	\end{center}
+\end{frame}
+
+% \begin{frame}
+% 	\frametitle{Temporal networks}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet1}
+% \end{frame}
+
+% \begin{frame}
+% 	\frametitle{Temporal networks}
+% 	\includegraphics[angle=270,origin=c,scale=0.4]{fig/socialnet2}
+% \end{frame}
+
+% \begin{frame}
+% 	\frametitle{Temporal networks}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet3}
+% \end{frame}
+
+% \begin{frame}
+% 	\frametitle{Temporal networks}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet4}
+% \end{frame}
+
+% step function for edges and vertices graph
+\pgfplotstableread{
+1 1
+2 1
+3 2
+4 2
+5 3
+6 3
+7 3
+8 3
+}\datatable
 
 \begin{frame}
 	\frametitle{Edges and vertices}
-	TODO: break picture into 4
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/edgevertex}
+	\begin{center}
+	\only<1-4>{
+	  \resizebox{0.65\textwidth}{!}{
+		\begin{tikzpicture}
+			\begin{axis}[
+				axis lines = left,
+				xlabel = {Number of edges},
+				ylabel = {Vertex i.d.},
+				xtick = {1,2,...,8},
+				ytick = {1,2,3},
+				xmin = 0,
+				xmax = 9,
+				ymax = 4,
+				ymin = 0,
+				style = thick
+			]
+			% \addplot+[ultra thick, const plot, no marks,color=darkblue] table [x index=0, y index=1]{\datatable};
+			% \draw (axis cs:1,0.5) -- (axis cs:2,0.5);
+			\only<1-4>{\fill[color=blueClj] (axis cs:1,1) circle (5pt);}
+			\only<1-4>{\fill[color=blueClj] (axis cs:2,1) circle (5pt);}
+			\only<2-4>{\fill[color=orangeClj] (axis cs:3,2) circle (5pt);}
+			\only<2-4>{\fill[color=blueClj] (axis cs:4,1) circle (5pt);}
+			\only<3-4>{\fill[color=darkgreenClj] (axis cs:5,3) circle (5pt);}
+			\only<3-4>{\fill[color=blueClj] (axis cs:6,1) circle (5pt);}
+			\only<4>{\fill[color=orangeClj] (axis cs:7,2) circle (5pt);}
+			\only<4>{\fill[color=darkgreenClj] (axis cs:8,3) circle (5pt);}
+			\end{axis}
+		\end{tikzpicture}
+	  }
+		\begin{tikzpicture}
+			\only<1-4>{
+				\Vertex[color=blueClj,label=1,x=0,y=0]{v1}
+				\Vertex[Pseudo,x=2,y=0]{pv} % just to get the spacing right across slides
+				\Edge[loopposition=180,lw=2](v1)(v1)
+			}
+			\only<2-4>{
+				\Vertex[color=orangeClj,label=2,x=2,y=0]{v2}
+				\Edge[lw=2](v2)(v1)
+			}
+			\only<3-4>{
+				\Vertex[color=darkgreenClj,label=3,x=1,y=1]{v3}
+				\Edge[lw=2](v3)(v1)
+			}
+			\only<4>{
+				\Edge[lw=2](v3)(v2)
+			}
+		\end{tikzpicture}
+	}
+	\end{center}
 \end{frame}
 
+% \begin{frame}
+% 	\frametitle{Edges and vertices}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/edgevertex}
+% \end{frame}
+
+
+% \begin{frame}
+% 	\frametitle{Sparsity}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/sparsity}
+% \end{frame}
 
 \begin{frame}
 	\frametitle{Sparsity}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/sparsity}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+				axis lines = left,
+				xlabel = {Number of edges},
+				ylabel = {Number of vertices},
+				ticks = none,
+				style = thick
+			]
+				\addplot[color=blueClj,domain=0:50,style=ultra thick]{x};
+				\addplot[color=orangeClj,domain=0:50,style=ultra thick]{x^(0.9)};
+				\addplot[color=darkgreenClj,domain=0:50,style=ultra thick]{x^(0.5)};
+				\node[anchor=west] (sparse) at (axis cs:5,40){\normalsize Sparse: $\Theta(\text{\# edges}^{\sigma})$};
+				\node (l1) at (axis cs:30,30){};
+				\node (l2) at (axis cs:30,21.35){};
+				\draw[->](sparse)--(l1);
+				\draw[->](sparse)--(l2);
+				\node[anchor=west] (dense) at (axis cs:20,10){\normalsize Dense: $O(\sqrt{\text{\# edges}})$};
+				\node[anchor=west] (sig1) at (axis cs:35,45){$\sigma=1$};
+				\node[anchor=west] (sig2) at (axis cs:35,22.5){$\frac{1}{2}<\sigma<1$};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
+
+% \begin{frame}
+% 	\frametitle{Power law degree distribution}
+% 	\includegraphics[angle=90,origin=c,scale=0.37]{fig/powerlaw}
+% \end{frame}
 
 \begin{frame}
 	\frametitle{Power law degree distribution}
-	\includegraphics[angle=90,origin=c,scale=0.37]{fig/powerlaw}
+	\begin{center}
+		$p(d) \propto d^{-\eta}$, for $\eta > 1$
+		\begin{tikzpicture}
+			\begin{axis}[
+				ymode = log,
+				xmode = log,
+				axis lines = left,
+				xlabel = {Log-degree, $\log d$},
+				ylabel = {$\log p(d)$},
+				style = thick,
+				yticklabels = {,,}
+				% xticklabels = {,,}
+				% ymajorticks = false,
+				% xmajorticks = false
+			]
+				\addplot[color=orangeClj,domain=1:10000,style=ultra thick]{x^(-1.5)};
+				\addplot[color=blueClj,domain=1:10000,style=ultra thick]{x^(-2.5)};
+				\node[anchor=west] (pl1) at (axis cs:300,0.001){$\eta=1.5$};
+				\node[anchor=west] (pl2) at (axis cs:15,0.000001){$\eta=2.5$};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 \begin{frame}
@@ -233,14 +447,98 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Paintbox representation}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/paintbox}
+	\frametitle{Factorizable (``rank one'') paintbox representation}
+	% \includegraphics[angle=90,origin=c,scale=0.4]{fig/paintbox}
+	\begin{center}
+	  \resizebox{\textwidth}{!}{
+		\begin{tikzpicture}
+			% boundary of paintbox
+			\coordinate (origin) at (0,0);
+			\coordinate (xmax) at (8,0);
+			\coordinate (xymax) at (8,1);
+			\coordinate (ymax) at (0,1);
+			% dummy to make math work
+			\coordinate (yoff) at (0,1);
+
+			% interval x coords
+			\coordinate (int1) at (1.75,1);
+			\coordinate (int1b) at (1.75,0);
+			\coordinate (int2) at (2.75,1);
+			\coordinate (int2b) at (2.75,0);
+			\coordinate (int3) at (4.1,1);
+			\coordinate (int3b) at (4.1,0);
+			\coordinate (int4) at (5.1,1);
+			\coordinate (int4b) at (5.1,0);
+			\coordinate (int5) at (6.0,1);
+			\coordinate (int5b) at (6.0,0);
+			\coordinate (int6) at (6.7,1);
+			\coordinate (int6b) at (6.7,0);
+			\coordinate (int7) at (7.4,1);
+
+			% draw paintbox
+			\draw (origin) -- (xmax) -- (xymax) -- (ymax) -- cycle;
+			\fill[blueClj] (origin) rectangle (int1);
+			\fill[orangeClj] (int1b) rectangle (int2);
+			\fill[darkgreenClj] (int2b) rectangle (int3);
+			\fill[grayClj] (int3b) rectangle (int4);
+			\fill[purpleClj] (int4b) rectangle (int5);
+			\fill[cyanClj] (int5b) rectangle (int6);
+			\fill[redClj] (int6b) rectangle (int7);
+
+			% interval labels
+			\node at (origin) [color=darkblue,label=below:{\Large $0$}]{};
+			\node at (xmax) [color=darkblue,label=below:{\Large $1$}]{};
+			\node at ($0.5*(int1)-0.5*(ymax)+(yoff)$) [color=darkblue,label=above:{\Large $P_1$}]{};
+			\node at ($0.5*(int1)+0.5*(int2)$) [color=darkblue,label=above:{\Large $P_2$}]{};
+			\node at ($0.5*(int2)+0.5*(int3)$) [color=darkblue,label=above:{\Large $P_3$}]{};
+			\node at ($0.5*(int3)+0.5*(int4)$) [color=darkblue,label=above:{\Large $P_4$}]{};
+			\node at ($0.5*(int4)+0.5*(int5)$) [color=darkblue,label=above:{\Large $P_5$}]{};
+			\node at ($0.5*(int5)+0.5*(int6)$) [color=darkblue,label=above:{\Large $P_6$}]{};
+			\node at ($0.5*(int6)+0.5*(int7)$) [color=darkblue,label=above:{\Large $P_7$}]{};
+			\node at ($0.5*(int7)+0.5*(xymax)$) [color=darkblue,label=above:{\Large $\dotsc$}]{};
+
+			% uniform r.v.'s
+			\foreach \x/\xn/\xco in {3.0/1/darkgrayClj, 6.4/2/darkgrayClj, 1.3/3/darkgrayClj, 5.3/4/darkgrayClj,0.6/5/darkgrayClj,7.1/6/darkgrayClj}
+			{
+				\fill[color=\xco] (\x,-1.0) circle (2pt) node[anchor=north,color=darkblue]{$U_{\xn}$} ;
+				\draw[dashed,color=darkblue] ($(\x,-1.0)+(0,0.1)$) -- (\x,1.25);
+			}
+
+		\end{tikzpicture}
+	  }
+	  Sequence of edges: $((3,6),(1,5),(1,7))$
+	  \vspace{0.5cm}
+
+	  \only<2>{
+	    \resizebox{0.75\textwidth}{!}{
+		  \begin{tikzpicture}
+			% vertices
+		  	\Vertex[label=1, color=blueClj, x=0, y=0]{v1}
+		  	\Vertex[label=2, color=orangeClj, x=-1, y=0]{v2}
+		  	\Vertex[label=3, color=darkgreenClj, x=2, y=0.5]{v3}
+		  	\Vertex[label=4, color=grayClj, x=4, y=0]{v4}
+		  	\Vertex[label=5, color=purpleClj, x=1, y=0.5]{v5}
+		  	\Vertex[label=6, color=cyanClj, x=2, y=-0.5]{v6}
+		  	\Vertex[label=7, color=redClj, x=1, y=-0.5]{v7}
+
+		  	% edges
+		  	\Edge[lw=2](v3)(v6)
+		  	\Edge[lw=2](v1)(v5)
+		  	\Edge[lw=2](v1)(v7)
+		  \end{tikzpicture}
+	    }
+	  }
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Paintbox representation}
-	Consequence\begin{itemize}
-		\item Edge exchangeable models have sublinear sparsity
+	Consequences for edge exchangeable models:
+	\begin{itemize}
+		\item Rate of vertex arrival gets slower and slower \\
+			$\Rightarrow$ sublinear sparsity: \# vertices$=o(n)$
+		\item Edges pile up \\
+			$\Rightarrow$ linear scaling of degrees: $d_{j,n}=\Theta(n)$
 	\end{itemize}
 \end{frame}
 
@@ -261,8 +559,69 @@
 
 \begin{frame}
 	\frametitle{Beta Neutral-to-the-left Model \cite{Bloem2017}}
-	\vspace{2pt}
-	\includegraphics[angle=90,origin=c,scale=0.37]{fig/bntl}
+	% \vspace{2pt}
+	% \includegraphics[angle=90,origin=c,scale=0.37]{fig/bntl}
+	\begin{enumerate}
+		\item Generate arrival times $1=T_1< T_2 < T_3 < \dotsc$ in any way.
+		\item Generate ends of edges sequentially:
+	\end{enumerate}
+	\begin{center}
+	\makebox[\textwidth][c]{
+	  \resizebox{1.1\textwidth}{!}{
+		\begin{tikzpicture}
+			% G_n
+			\Vertex[size=0.5,color=blueClj,x=0,y=0]{v1}
+			\Vertex[size=0.5,color=orangeClj,x=2,y=0]{v2}
+			\Vertex[size=0.5,color=darkgreenClj,x=1,y=1]{v3}
+			\Vertex[size=0.5,color=grayClj,x=1,y=-1.2]{v4}
+			\Vertex[Pseudo,label={\Large ?},x=1,y=-0.4]{ps}
+			\Edge[lw=2](v1)(v2)
+			\Edge[lw=2,loopposition=180](v1)(v1)
+			\Edge[lw=2,bend=30](v2)(v3)
+			\Edge[lw=2,bend=-30](v2)(v3)
+			\Edge[lw=2,bend=60](v4)(ps)
+			\Text[x=3,y=0]{\Large $G_n$}
+
+			% split on arrival time
+			\Text[x=1,y=-2]{Is the next arrival time equal to $n+1$?}
+			\Vertex[x=1,y=-2,Pseudo]{vtext}
+			\Vertex[x=-1,y=-3,Pseudo,label={\normalsize yes}]{vyes}
+			\Vertex[x=3,y=-3,Pseudo,label={\normalsize no}]{vno}
+			\Edge[Direct,color=darkblue,bend=20](vtext)(vyes)
+			\Edge[Direct,color=darkblue,bend=-20](vtext)(vno)
+
+			% G_{n+1} with new vertex
+			\Vertex[size=0.5,color=blueClj,x=-4,y=-4]{v1n}
+			\Vertex[size=0.5,color=orangeClj,x=-2,y=-4]{v2n}
+			\Vertex[size=0.5,color=darkgreenClj,x=-3,y=-3]{v3n}
+			\Vertex[size=0.5,color=grayClj,x=-3,y=-5]{v4n}
+			\Vertex[size=0.5,color=purpleClj,x=-4,y=-5]{v5n}
+			\Edge[lw=2](v1n)(v2n)
+			\Edge[lw=2,loopposition=180](v1n)(v1n)
+			\Edge[lw=2,bend=30](v2n)(v3n)
+			\Edge[lw=2,bend=-30](v2n)(v3n)
+			\Edge[lw=2,bend=60](v4n)(v5n)
+			\Text[x=-5.5,y=-4]{\Large $G_{n+1}$}
+			\Text[x=-3,y=-6]{\Large $n+1=T_{K+1}\Rightarrow Z_{n+1}=K+1$}
+
+			% G_{n+1} without new vertex
+			\Vertex[size=0.5,color=blueClj,x=4,y=-4]{v1nn}
+			\Vertex[size=0.5,color=orangeClj,x=6,y=-4]{v2nn}
+			\Vertex[size=0.5,color=darkgreenClj,x=5,y=-3]{v3nn}
+			\Vertex[size=0.5,color=grayClj,x=5,y=-5]{v4nn}
+			% \Vertex[size=0.5,color=purpleClj,x=-4,y=-5.2]{v5n}
+			\Edge[lw=2](v1nn)(v2nn)
+			\Edge[lw=2,loopposition=180](v1nn)(v1nn)
+			\Edge[lw=2,bend=30](v2nn)(v3nn)
+			\Edge[lw=2,bend=-30](v2nn)(v3nn)
+			\Edge[lw=2](v4nn)(v2nn)
+			\Text[x=7,y=-4]{\Large $G_{n+1}$}
+			\Text[x=5,y=-6]{\Large $P[Z_{n+1}=j] \propto \text{deg}_{j,n}-\alpha$}
+
+		\end{tikzpicture}
+	  }
+	}
+	\end{center}
 \end{frame}
 
 %\begin{frame}
@@ -275,9 +634,94 @@
 %	\includegraphics[angle=90,origin=c,scale=0.4]{fig/bntllatent2}
 %\end{frame}
 
+% \definecolor{darkgreenClj}{rgb}{0.25,.5,0.25}
+% \definecolor{blueClj}{rgb}{0,0.33,0.66}
+% \definecolor{redClj}{rgb}{0.66,0.0,0.0}
+% \definecolor{purpleClj}{rgb}{0.33,0,0.66}
+% \definecolor{cyanClj}{rgb}{0.0,0.5,0.5}
+% \definecolor{orangeClj}{rgb}{0.75,0.35,0.0}
+% \definecolor{grayClj}{rgb}{0.6,0.6,0.6}
+% \definecolor{darkgrayClj}{rgb}{0.3,0.3,0.3}
+
 \begin{frame}
-	\frametitle{Latent representation}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
+	\frametitle{Sequence of paintboxes representation}
+	% \includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
+	% \vspace{-0.5cm}
+	\begin{center}
+	\makebox[\textwidth][c]{
+	  \resizebox{0.95\textwidth}{!}{
+	  	\begin{tikzpicture}
+
+			% y offset for paintboxes
+			\coordinate (pboff) at (0,-3);
+
+			% draw paintboxes
+			\def\psipic{{0.0,0.6,0.7}}%,0.9}} % these are (1-\psi_j)
+			\def\blockcolors{{"0,0.33,0.66","0.75,0.35,0.0","0.25,.5,0.25"}}%,"0.6,0.6,0.6"}} % these are block colors
+			\def\nrands{{3,3,6}}%,5}}
+			\foreach \nouter in {0,...,2}{
+				\draw ($(0,0)+\nouter*(pboff)$) -- ($(8,0)+\nouter*(pboff)$) -- ($(8,1)+\nouter*(pboff)$) -- ($(0,1)+\nouter*(pboff)$) -- cycle;
+				\pgfmathparse{int(\nouter+1)};
+				\let\nverts\pgfmathresult;
+				\pgfmathparse{int(\nouter+2)};
+				\let\nextnverts\pgfmathresult;
+				\pgfmathparse{int(\nouter)};
+				\let\prevnverts\pgfmathresult;
+				\node at ($(-1.5,0.5)+\nouter*(pboff)$) {$T_{\nverts} < n < T_{\nextnverts}$};
+				% \ifnum \nouter>0
+				% 	\node at ($(10.0,1.0)+\nouter*(pboff)$) {$P_{j,\nverts}=P_{j,\prevnverts}(1-\Psi_{\nverts})$};
+				% 	\node at ($(10.0,0.0)+\nouter*(pboff)$) {$P_{\nverts,\nverts}=\Psi_{\nverts}$};
+				% \fi
+
+				\edef\tmplower{1.0};
+				\foreach \ninner in {0,...,\nouter}{
+					% update color
+					\pgfmathparse{\blockcolors[\nouter-\ninner]};
+					\let\tmpcol\pgfmathresult;
+					\definecolor{tmpcol}{rgb}{\tmpcol};
+					% \node at ($(0.25*\nouter,-1*\ninner)$) [color=tmpcol] {\small \tmpcol};
+
+					% update x coordinates
+					\edef\tmpupper{\tmplower};
+					\pgfmathparse{\psipic[\nouter-\ninner]*\tmplower};
+					\global\let\tmplower\pgfmathresult;
+
+					\pgfmathparse{int(\nouter-\ninner+1)};
+					\let\tmpidx\pgfmathresult;
+						% for testing
+						% \node at ($(8*\tmpupper,0)+\nouter*(pboff)$) {u: \tmpupper, \ninner};
+						% \node at ($(8*\tmplower,0)+\nouter*(pboff)$) {l: \tmplower, \ninner};
+					% draw block
+					\fill[color=tmpcol] ($(8*\tmplower,0)+\nouter*(pboff)$) rectangle ($(8*\tmpupper,1)+\nouter*(pboff)$);
+					\node at ($(4*\tmplower+4*\tmpupper,0.5)+\nouter*(pboff)$) {$P_{\tmpidx,\nverts}$};
+					\ifnum \ninner=\nouter
+						\ifnum \nouter=0
+							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{1,\nverts}=1$};
+						\else
+							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{1,\nverts}=P_{1,\prevnverts}(1-\Psi_{\nverts})$};
+						\fi
+					\fi
+
+					\ifnum \ninner=0
+						\ifnum \nouter>0
+							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{\nverts,\nverts}=\Psi_{\nverts}$};
+						\fi
+					\fi
+				}
+				\pgfmathparse{\nrands[\nouter]};
+				\let\numdots\pgfmathresult;
+				\foreach \nunif [count=\i] in {1,...,\numdots}{
+					\pgfmathparse{random()};
+					\let\tmprnd\pgfmathresult;
+					% \edef\tmprnd{rand}
+					\fill[color=darkgrayClj] ($(8*\tmprnd,-0.3)+\nouter*(pboff)$) circle (2pt);% node[anchor=north,color=darkblue]{$U_{T_{\nverts}+\i}$};
+					\draw[dashed,color=darkblue] ($(8*\tmprnd,-0.2)+\nouter*(pboff)$) -- ($(8*\tmprnd,1.0)+\nouter*(pboff)$);
+				}
+			}
+	  	\end{tikzpicture}
+	  }
+	}
+	\end{center}
 \end{frame}
 
 
@@ -301,9 +745,9 @@
 
 \begin{frame}
 	\frametitle{Gibbs structure}
-	The joint density has \textbf{Gibbs structure}
+	The joint probability has \textbf{Gibbs structure} due to left-neutrality
 	\begin{equation*}
-	p(\text{graph}|\bfT) = \prod_{j=1}^K p(\text{choose }j\ d_j\text{ times out of } n - T_j)
+	P(\text{graph}|\bfT) = \prod_{j=1}^K P(\text{choose }j\ d_j-1\text{ times out of } n - T_j \text{ trials })
 	\end{equation*}
 	\begin{itemize}
 		\item $K$ = \#vertices
@@ -315,7 +759,7 @@
 
 \begin{frame}
 	\frametitle{Gibbs structure}
-	Explicitly
+	Explicitly,
 	\begin{equation*}
 	p(\text{graph}|\bfT) = \frac{\Gamma(d_1 - \alpha)}{\Gamma(n - K\alpha)}\prod_{j=2}^K \frac{\Gamma(T_j - j\alpha)\Gamma(d_j - \alpha)}{\Gamma(T_j - 1 - (j-1)\alpha)\Gamma(1-\alpha)}
 	\end{equation*}
@@ -369,7 +813,8 @@
 			\hline
 			\rule{0pt}{3ex}
 			$\sigma$ & Initialise in descending degree order \\
-			& \quad use M-H with adjacent swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
+			& \quad use M-H with adjacent swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$\\
+			& \quad fast to compute due to Gibbs structure
 		\end{tabular}
 	\end{center}
 \end{frame}
