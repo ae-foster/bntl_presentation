@@ -433,18 +433,78 @@
 
 \begin{frame}
 	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee1}
+	\begin{center}
+	 \makebox[\textwidth][c]{
+	   \resizebox{\textwidth}{!}{
+	   	 \begin{tikzpicture}
+	   	 	% final graph
+			\Vertex[size=0.5,color=blueClj,x=0.5,y=-3]{v1nn}
+			\Vertex[size=0.5,color=orangeClj,x=2.5,y=-3]{v2nn}
+			\Vertex[size=0.5,color=darkgreenClj,x=1.5,y=-2]{v3nn}
+			\Vertex[size=0.5,color=grayClj,x=1.5,y=-4]{v4nn}
+			\Edge[lw=2](v1nn)(v2nn)
+			% \Edge[lw=2,loopposition=180](v1nn)(v1nn)
+			\Edge[lw=2,bend=30](v2nn)(v3nn)
+			\Edge[lw=2,bend=-30](v2nn)(v3nn)
+			\Edge[lw=2](v4nn)(v2nn)
+
+			% top sequence
+			  % first graph
+			  \Vertex[size=0.5,color=blueClj,x=-10.5,y=0]{vt11}
+			  \Vertex[size=0.5,color=orangeClj,x=-8.5,y=0]{vt12}
+			  \Edge[lw=2](vt11)(vt12)
+			  % second graph
+			  \Vertex[size=0.5,color=blueClj,x=-7,y=0]{vt21}
+			  \Vertex[size=0.5,color=orangeClj,x=-5,y=0]{vt22}
+			  \Vertex[size=0.5,color=darkgreenClj,x=-6,y=1]{vt23}
+			  \Edge[lw=2](vt21)(vt22)
+			  \Edge[lw=2](vt22)(vt23)
+			  % third graph
+			  \Vertex[size=0.5,color=blueClj,x=-3.5,y=0]{vt31}
+			  \Vertex[size=0.5,color=orangeClj,x=-1.5,y=0]{vt32}
+			  \Vertex[size=0.5,color=darkgreenClj,x=-2.5,y=1]{vt33}
+			  \Edge[lw=2](vt31)(vt32)
+			  \Edge[lw=2,bend=-30](vt32)(vt33)
+			  \Edge[lw=2,bend=30](vt32)(vt33)
+
+			% bottom sequence
+			  % first graph
+			  \Vertex[size=0.5,color=grayClj,x=-9.5,y=-7]{vb11}
+			  \Vertex[size=0.5,color=orangeClj,x=-8.5,y=-6]{vb12}
+			  \Edge[lw=2](vb11)(vb12)
+			  % second graph
+			  \Vertex[size=0.5,color=grayClj,x=-6,y=-7]{vb21}
+			  \Vertex[size=0.5,color=orangeClj,x=-5,y=-6]{vb22}
+			  \Vertex[size=0.5,color=darkgreenClj,x=-6,y=-5]{vb23}
+			  \Edge[lw=2](vb21)(vb22)
+			  \Edge[lw=2](vb22)(vb23)
+			  % third graph
+			  \Vertex[size=0.5,color=grayClj,x=-2.5,y=-7]{vb31}
+			  \Vertex[size=0.5,color=orangeClj,x=-1.5,y=-6]{vb32}
+			  \Vertex[size=0.5,color=darkgreenClj,x=-2.5,y=-5]{vb33}
+			  \Edge[lw=2](vb31)(vb32)
+			  \Edge[lw=2,bend=-30](vb32)(vb33)
+			  \Edge[lw=2,bend=30](vb32)(vb33)
+	   	 \end{tikzpicture}
+	   }
+	 }
+	\end{center}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee2}
-\end{frame}
+% \begin{frame}
+% 	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee1}
+% \end{frame}
 
-\begin{frame}
-	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee3}
-\end{frame}
+% \begin{frame}
+% 	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee2}
+% \end{frame}
+
+% \begin{frame}
+% 	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
+% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee3}
+% \end{frame}
 
 \begin{frame}
 	\frametitle{Factorizable (``rank one'') paintbox representation}
