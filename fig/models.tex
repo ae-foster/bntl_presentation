@@ -1,0 +1,65 @@
+\begin{tikzpicture}
+	\only<1-4>{
+		\draw[color=black,thick] (-0.5,4.5) -- (8.5,4.5)
+			node[pos=0.25,above]{Dense} node[pos=0.75,above]{Sparse};
+		
+		% place-holders so slide doesn't resize every time
+		\fill[color=white,rounded corners=10pt] (5.5,0) rectangle (8.0,4);
+		\fill[color=white,rounded corners=10pt] (3.0,-1.25) rectangle (8.0,1.25);
+
+		% dense-sparse dividing line
+		\draw[dashed,thick,color=black] (4,-0.5) -- (4,5);
+	}
+
+	% bntl
+	\only<4>{
+		\fill[color=darkgreenClj!20,rounded corners=10pt] (3.0,-1.25) rectangle (8.0,1.25);
+		\draw[color=darkgreenClj!20] (5.5,-0.75) circle (2pt) node[align=center, below,color=black] {Beta neutral-to-the-left};
+	}
+
+	% vertex exchangeable
+	\only<1-4>{
+		\fill[color=black!20,rounded corners=10pt] (0,0) rectangle (2.5,4);
+		\draw[color=black!20] (1.25,2.5) circle (2pt) node[align=center, below,color=black] {Vertex \\exchangeable};
+	}
+	% edge exchangeable
+	\only<3-4>{
+		\fill[color=orangeClj!20,rounded corners=10pt] (2.75,0) rectangle (5.25,4);
+		\draw[color=orangeClj!20] (4.0,2.5) circle (2pt) node[align=center, below,color=black] {Edge \\exchangeable};
+
+		% exch gibbs partitions
+		\fill[color=orangeClj!50,rounded corners=10pt] (3.0,0.25) rectangle (5.0,1.25);
+		\draw[color=orangeClj!50] (4,1.25) circle (0pt) node[align=center,below,color=black] {EGP};
+
+		% pitman-yor
+		\coordinate (pycirc) at (4.0,0.5);
+		\coordinate (pytext) at (1.75,-0.1);
+		\fill[color=orangeClj!80] (pycirc) circle (5pt);
+		\node[color=black,anchor=north,thick] at (pytext) {\small Pitman--Yor};
+		\draw[->,color=black] (pytext) -- (pycirc);
+	}
+	% preferential attachment
+	\only<2-4>{
+		\fill[color=blueClj!20,rounded corners=10pt] (5.5,0) rectangle (8.0,4);
+		\draw[color=blueClj!20] (6.75,2.5) circle (2pt) node[align=center, below,color=black] {Preferential \\attachment};
+
+		% barabasi-albert
+		\coordinate (abcirc) at (6.0,0.5);
+		\coordinate (abtext) at (8.5,0);
+		\fill[color=blueClj!80] (abcirc) circle (5pt);
+		\node[color=black,anchor=north,thick] at (abtext) {\small Barab\'{a}si--Albert};
+		\draw[->,color=black] (abtext) -- (abcirc);
+
+		% yule-simon
+		\coordinate (yscirc) at (6.0,1.0);
+		\coordinate (ystext) at (8.5,0.75);
+		\fill[color=blueClj!80] (yscirc) circle (5pt);
+		\node[color=black,anchor=north,thick] at (ystext) {\small Yule--Simon};
+		\draw[->,color=black] (ystext) -- (yscirc);
+	}
+	% boundary of bntl
+	\only<4>{
+		\draw[color=black,rounded corners=10pt] (3.0,-1.25) rectangle (8.0,1.25);
+	}
+	
+\end{tikzpicture}
