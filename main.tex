@@ -85,7 +85,7 @@
 
 \newcommand{\leftfoot}{} % Left footer text
 
-\newcommand{\rightfoot}{~ \url{http://csml.stats.ox.ac.uk/learning/}} % Right footer text
+\newcommand{\rightfoot}{} % Right footer text
 
 
 \title{Sampling and Inference for Beta Neutral-to-the-Left Models of Sparse Networks} % Poster title
@@ -103,23 +103,13 @@
 	\titlepage
 \end{frame}
 
+
 \begin{frame}
-	\frametitle{Contents}
-	\tableofcontents
+	\frametitle{Models for sparse networks}
+	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models6}
 \end{frame}
 
 \section{Background}
-
-\begin{frame}
-	\frametitle{Temporal networks}
-	\textbf{Examples}
-	\begin{itemize}
-		\item Messages sent between people over time
-		\item Protein-protein interactions
-	\end{itemize}
-	
-\end{frame}
-
 \begin{frame}
 	\frametitle{Temporal networks}
 	\begin{center}
@@ -365,25 +355,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Empirical study}
-	\begin{table}[b]
-		% \vspace*{-\baselineskip}
-		\label{tab:datasets}
-		\begin{center}
-			\begin{tabular}{lll}
-				SNAP dataset \cite{snapnets} & \# of vertices   & \# of edges    \\
-				\hline
-				Ask Ubuntu    & 159,316   & 964,437    \\
-				UCI social network   & 1,899     & 20,296     \\
-				\vdots & \vdots & \vdots
-			\end{tabular}
-		\end{center}
-	\end{table}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Ask Ubuntu}
+	\frametitle{Empirical study: Ask Ubuntu}
 	\begin{figure}[h]
 		\includegraphics[width=1.0\textwidth]{fig/n_askubuntu_arrival.pdf}
 	\end{figure}
@@ -392,7 +364,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{UCI social network}
+	\frametitle{Empirical study: UCI social network}
 	\begin{figure}[h]
 		\includegraphics[width=1.0\textwidth]{fig/n_CollegeMsg_arrival.pdf}
 	\end{figure}
@@ -410,6 +382,17 @@
 %	
 %\end{frame}
 
+\begin{frame}
+	\frametitle{Exchangeable models}
+	A sequence of random variables $X_1, X_2, ...$ is \textit{exchangeable} if for a finite permutation $\sigma$,
+	\begin{equation*}
+		X_{\sigma(1)}, X_{\sigma(2)}, ...
+	\end{equation*}
+	has the same distribution as the original sequence.
+	
+	\vspace{20pt}
+	Exchangeable models lead to tractable inference (de Finetti).
+\end{frame}
 
 \begin{frame}
 	\frametitle{Models}
@@ -431,116 +414,6 @@
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models4}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee1}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee2}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Edge exchangeable models \cite{cai2016}, \cite{CraneDempsey2017}}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/ee3}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Factorizable (``rank one'') paintbox representation}
-	% \includegraphics[angle=90,origin=c,scale=0.4]{fig/paintbox}
-	\begin{center}
-	  \resizebox{\textwidth}{!}{
-		\begin{tikzpicture}
-			% boundary of paintbox
-			\coordinate (origin) at (0,0);
-			\coordinate (xmax) at (8,0);
-			\coordinate (xymax) at (8,1);
-			\coordinate (ymax) at (0,1);
-			% dummy to make math work
-			\coordinate (yoff) at (0,1);
-
-			% interval x coords
-			\coordinate (int1) at (1.75,1);
-			\coordinate (int1b) at (1.75,0);
-			\coordinate (int2) at (2.75,1);
-			\coordinate (int2b) at (2.75,0);
-			\coordinate (int3) at (4.1,1);
-			\coordinate (int3b) at (4.1,0);
-			\coordinate (int4) at (5.1,1);
-			\coordinate (int4b) at (5.1,0);
-			\coordinate (int5) at (6.0,1);
-			\coordinate (int5b) at (6.0,0);
-			\coordinate (int6) at (6.7,1);
-			\coordinate (int6b) at (6.7,0);
-			\coordinate (int7) at (7.4,1);
-
-			% draw paintbox
-			\draw (origin) -- (xmax) -- (xymax) -- (ymax) -- cycle;
-			\fill[blueClj] (origin) rectangle (int1);
-			\fill[orangeClj] (int1b) rectangle (int2);
-			\fill[darkgreenClj] (int2b) rectangle (int3);
-			\fill[grayClj] (int3b) rectangle (int4);
-			\fill[purpleClj] (int4b) rectangle (int5);
-			\fill[cyanClj] (int5b) rectangle (int6);
-			\fill[redClj] (int6b) rectangle (int7);
-
-			% interval labels
-			\node at (origin) [color=darkblue,label=below:{\Large $0$}]{};
-			\node at (xmax) [color=darkblue,label=below:{\Large $1$}]{};
-			\node at ($0.5*(int1)-0.5*(ymax)+(yoff)$) [color=darkblue,label=above:{\Large $P_1$}]{};
-			\node at ($0.5*(int1)+0.5*(int2)$) [color=darkblue,label=above:{\Large $P_2$}]{};
-			\node at ($0.5*(int2)+0.5*(int3)$) [color=darkblue,label=above:{\Large $P_3$}]{};
-			\node at ($0.5*(int3)+0.5*(int4)$) [color=darkblue,label=above:{\Large $P_4$}]{};
-			\node at ($0.5*(int4)+0.5*(int5)$) [color=darkblue,label=above:{\Large $P_5$}]{};
-			\node at ($0.5*(int5)+0.5*(int6)$) [color=darkblue,label=above:{\Large $P_6$}]{};
-			\node at ($0.5*(int6)+0.5*(int7)$) [color=darkblue,label=above:{\Large $P_7$}]{};
-			\node at ($0.5*(int7)+0.5*(xymax)$) [color=darkblue,label=above:{\Large $\dotsc$}]{};
-
-			% uniform r.v.'s
-			\foreach \x/\xn/\xco in {3.0/1/darkgrayClj, 6.4/2/darkgrayClj, 1.3/3/darkgrayClj, 5.3/4/darkgrayClj,0.6/5/darkgrayClj,7.1/6/darkgrayClj}
-			{
-				\fill[color=\xco] (\x,-1.0) circle (2pt) node[anchor=north,color=darkblue]{$U_{\xn}$} ;
-				\draw[dashed,color=darkblue] ($(\x,-1.0)+(0,0.1)$) -- (\x,1.25);
-			}
-
-		\end{tikzpicture}
-	  }
-	  Sequence of edges: $((3,6),(1,5),(1,7))$
-	  \vspace{0.5cm}
-
-	  \only<2>{
-	    \resizebox{0.75\textwidth}{!}{
-		  \begin{tikzpicture}
-			% vertices
-		  	\Vertex[label=1, color=blueClj, x=0, y=0]{v1}
-		  	\Vertex[label=2, color=orangeClj, x=-1, y=0]{v2}
-		  	\Vertex[label=3, color=darkgreenClj, x=2, y=0.5]{v3}
-		  	\Vertex[label=4, color=grayClj, x=4, y=0]{v4}
-		  	\Vertex[label=5, color=purpleClj, x=1, y=0.5]{v5}
-		  	\Vertex[label=6, color=cyanClj, x=2, y=-0.5]{v6}
-		  	\Vertex[label=7, color=redClj, x=1, y=-0.5]{v7}
-
-		  	% edges
-		  	\Edge[lw=2](v3)(v6)
-		  	\Edge[lw=2](v1)(v5)
-		  	\Edge[lw=2](v1)(v7)
-		  \end{tikzpicture}
-	    }
-	  }
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Paintbox representation}
-	Consequences for edge exchangeable models:
-	\begin{itemize}
-		\item Rate of vertex arrival gets slower and slower \\
-			$\Rightarrow$ sublinear sparsity: \#vertices $=o(\text{\#edges})$
-		\item Edges pile up \\
-			$\Rightarrow$ linear scaling of degrees: $d_{j,n}=\Theta(n)$
-	\end{itemize}
-\end{frame}
 
 \begin{frame}
 	\frametitle{Models}
@@ -643,86 +516,86 @@
 % \definecolor{grayClj}{rgb}{0.6,0.6,0.6}
 % \definecolor{darkgrayClj}{rgb}{0.3,0.3,0.3}
 
-\begin{frame}
-	\frametitle{Sequence of paintboxes representation}
-	% \includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
-	% \vspace{-0.5cm}
-	\begin{center}
-	\makebox[\textwidth][c]{
-	  \resizebox{0.95\textwidth}{!}{
-	  	\begin{tikzpicture}
-
-			% y offset for paintboxes
-			\coordinate (pboff) at (0,-3);
-
-			% draw paintboxes
-			\def\psipic{{0.0,0.6,0.7}}%,0.9}} % these are (1-\psi_j)
-			\def\blockcolors{{"0,0.33,0.66","0.75,0.35,0.0","0.25,.5,0.25"}}%,"0.6,0.6,0.6"}} % these are block colors
-			\def\nrands{{3,3,6}}%,5}}
-			\foreach \nouter in {0,...,2}{
-				\draw ($(0,0)+\nouter*(pboff)$) -- ($(8,0)+\nouter*(pboff)$) -- ($(8,1)+\nouter*(pboff)$) -- ($(0,1)+\nouter*(pboff)$) -- cycle;
-				\pgfmathparse{int(\nouter+1)};
-				\let\nverts\pgfmathresult;
-				\pgfmathparse{int(\nouter+2)};
-				\let\nextnverts\pgfmathresult;
-				\pgfmathparse{int(\nouter)};
-				\let\prevnverts\pgfmathresult;
-				\node at ($(-1.5,0.5)+\nouter*(pboff)$) {$T_{\nverts} < n < T_{\nextnverts}$};
-				% \ifnum \nouter>0
-				% 	\node at ($(10.0,1.0)+\nouter*(pboff)$) {$P_{j,\nverts}=P_{j,\prevnverts}(1-\Psi_{\nverts})$};
-				% 	\node at ($(10.0,0.0)+\nouter*(pboff)$) {$P_{\nverts,\nverts}=\Psi_{\nverts}$};
-				% \fi
-
-				\edef\tmplower{1.0};
-				\foreach \ninner in {0,...,\nouter}{
-					% update color
-					\pgfmathparse{\blockcolors[\nouter-\ninner]};
-					\let\tmpcol\pgfmathresult;
-					\definecolor{tmpcol}{rgb}{\tmpcol};
-					% \node at ($(0.25*\nouter,-1*\ninner)$) [color=tmpcol] {\small \tmpcol};
-
-					% update x coordinates
-					\edef\tmpupper{\tmplower};
-					\pgfmathparse{\psipic[\nouter-\ninner]*\tmplower};
-					\global\let\tmplower\pgfmathresult;
-
-					\pgfmathparse{int(\nouter-\ninner+1)};
-					\let\tmpidx\pgfmathresult;
-						% for testing
-						% \node at ($(8*\tmpupper,0)+\nouter*(pboff)$) {u: \tmpupper, \ninner};
-						% \node at ($(8*\tmplower,0)+\nouter*(pboff)$) {l: \tmplower, \ninner};
-					% draw block
-					\fill[color=tmpcol] ($(8*\tmplower,0)+\nouter*(pboff)$) rectangle ($(8*\tmpupper,1)+\nouter*(pboff)$);
-					\node at ($(4*\tmplower+4*\tmpupper,0.5)+\nouter*(pboff)$) {$P_{\tmpidx,\nverts}$};
-					\ifnum \ninner=\nouter
-						\ifnum \nouter=0
-							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{1,\nverts}=1$};
-						\else
-							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{1,\nverts}=P_{1,\prevnverts}(1-\Psi_{\nverts})$};
-						\fi
-					\fi
-
-					\ifnum \ninner=0
-						\ifnum \nouter>0
-							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{\nverts,\nverts}=\Psi_{\nverts}$};
-						\fi
-					\fi
-				}
-				\pgfmathparse{\nrands[\nouter]};
-				\let\numdots\pgfmathresult;
-				\foreach \nunif [count=\i] in {1,...,\numdots}{
-					\pgfmathparse{random()};
-					\let\tmprnd\pgfmathresult;
-					% \edef\tmprnd{rand}
-					\fill[color=darkgrayClj] ($(8*\tmprnd,-0.3)+\nouter*(pboff)$) circle (2pt);% node[anchor=north,color=darkblue]{$U_{T_{\nverts}+\i}$};
-					\draw[dashed,color=darkblue] ($(8*\tmprnd,-0.2)+\nouter*(pboff)$) -- ($(8*\tmprnd,1.0)+\nouter*(pboff)$);
-				}
-			}
-	  	\end{tikzpicture}
-	  }
-	}
-	\end{center}
-\end{frame}
+%\begin{frame}
+%	\frametitle{Sequence of paintboxes representation}
+%	% \includegraphics[angle=90,origin=c,scale=0.4]{fig/recursivescaling}
+%	% \vspace{-0.5cm}
+%	\begin{center}
+%	\makebox[\textwidth][c]{
+%	  \resizebox{0.95\textwidth}{!}{
+%	  	\begin{tikzpicture}
+%
+%			% y offset for paintboxes
+%			\coordinate (pboff) at (0,-3);
+%
+%			% draw paintboxes
+%			\def\psipic{{0.0,0.6,0.7}}%,0.9}} % these are (1-\psi_j)
+%			\def\blockcolors{{"0,0.33,0.66","0.75,0.35,0.0","0.25,.5,0.25"}}%,"0.6,0.6,0.6"}} % these are block colors
+%			\def\nrands{{3,3,6}}%,5}}
+%			\foreach \nouter in {0,...,2}{
+%				\draw ($(0,0)+\nouter*(pboff)$) -- ($(8,0)+\nouter*(pboff)$) -- ($(8,1)+\nouter*(pboff)$) -- ($(0,1)+\nouter*(pboff)$) -- cycle;
+%				\pgfmathparse{int(\nouter+1)};
+%				\let\nverts\pgfmathresult;
+%				\pgfmathparse{int(\nouter+2)};
+%				\let\nextnverts\pgfmathresult;
+%				\pgfmathparse{int(\nouter)};
+%				\let\prevnverts\pgfmathresult;
+%				\node at ($(-1.5,0.5)+\nouter*(pboff)$) {$T_{\nverts} < n < T_{\nextnverts}$};
+%				% \ifnum \nouter>0
+%				% 	\node at ($(10.0,1.0)+\nouter*(pboff)$) {$P_{j,\nverts}=P_{j,\prevnverts}(1-\Psi_{\nverts})$};
+%				% 	\node at ($(10.0,0.0)+\nouter*(pboff)$) {$P_{\nverts,\nverts}=\Psi_{\nverts}$};
+%				% \fi
+%
+%				\edef\tmplower{1.0};
+%				\foreach \ninner in {0,...,\nouter}{
+%					% update color
+%					\pgfmathparse{\blockcolors[\nouter-\ninner]};
+%					\let\tmpcol\pgfmathresult;
+%					\definecolor{tmpcol}{rgb}{\tmpcol};
+%					% \node at ($(0.25*\nouter,-1*\ninner)$) [color=tmpcol] {\small \tmpcol};
+%
+%					% update x coordinates
+%					\edef\tmpupper{\tmplower};
+%					\pgfmathparse{\psipic[\nouter-\ninner]*\tmplower};
+%					\global\let\tmplower\pgfmathresult;
+%
+%					\pgfmathparse{int(\nouter-\ninner+1)};
+%					\let\tmpidx\pgfmathresult;
+%						% for testing
+%						% \node at ($(8*\tmpupper,0)+\nouter*(pboff)$) {u: \tmpupper, \ninner};
+%						% \node at ($(8*\tmplower,0)+\nouter*(pboff)$) {l: \tmplower, \ninner};
+%					% draw block
+%					\fill[color=tmpcol] ($(8*\tmplower,0)+\nouter*(pboff)$) rectangle ($(8*\tmpupper,1)+\nouter*(pboff)$);
+%					\node at ($(4*\tmplower+4*\tmpupper,0.5)+\nouter*(pboff)$) {$P_{\tmpidx,\nverts}$};
+%					\ifnum \ninner=\nouter
+%						\ifnum \nouter=0
+%							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{1,\nverts}=1$};
+%						\else
+%							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{1,\nverts}=P_{1,\prevnverts}(1-\Psi_{\nverts})$};
+%						\fi
+%					\fi
+%
+%					\ifnum \ninner=0
+%						\ifnum \nouter>0
+%							\node[anchor=south] at ($(4*\tmplower+4*\tmpupper,1)+\nouter*(pboff)$) {$P_{\nverts,\nverts}=\Psi_{\nverts}$};
+%						\fi
+%					\fi
+%				}
+%				\pgfmathparse{\nrands[\nouter]};
+%				\let\numdots\pgfmathresult;
+%				\foreach \nunif [count=\i] in {1,...,\numdots}{
+%					\pgfmathparse{random()};
+%					\let\tmprnd\pgfmathresult;
+%					% \edef\tmprnd{rand}
+%					\fill[color=darkgrayClj] ($(8*\tmprnd,-0.3)+\nouter*(pboff)$) circle (2pt);% node[anchor=north,color=darkblue]{$U_{T_{\nverts}+\i}$};
+%					\draw[dashed,color=darkblue] ($(8*\tmprnd,-0.2)+\nouter*(pboff)$) -- ($(8*\tmprnd,1.0)+\nouter*(pboff)$);
+%				}
+%			}
+%	  	\end{tikzpicture}
+%	  }
+%	}
+%	\end{center}
+%\end{frame}
 
 
 \section{Sampling and inference}
@@ -732,7 +605,7 @@
 	\pause
 	\begin{itemize}
 		\item Inference is notoriously difficult for \textit{non-exchangeable} structures
-		\item Need to identify \textit{exchangeable substructures}
+		\item Need to identify \textit{exchangeable substructures} for tractable inference
 	\end{itemize}
 \end{frame}
 
@@ -745,28 +618,14 @@
 
 \begin{frame}
 	\frametitle{Gibbs structure}
-	The joint probability has \textbf{Gibbs structure} due to left-neutrality
-	\begin{equation*}
-	P(\text{graph}|\bfT) = \prod_{j=1}^K P(\text{choose }j\ d_j-1\text{ times out of } n - T_j \text{ trials })
-	\end{equation*}
+	The joint probability has \textbf{Gibbs structure}
+	\begin{align*}
+	P(\text{graph}&|T_1, T_2, ...) = \\
+	& \prod_{j \in \text{vertices}} P(\text{choose }j\ d_j-1\text{ times out of } T - T_j \text{ trials })
+	\end{align*}
 	\begin{itemize}
-		\item $K$ = \#vertices
-		\item $n$ = \#edges
 		\item $d_j$ = degree of vertex $j$
-		\item $T_j$ = arrival time of vertex $j$
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Gibbs structure}
-	Explicitly,
-	\begin{equation*}
-	p(\text{graph}|\bfT) = \frac{\Gamma(d_1 - \alpha)}{\Gamma(n - K\alpha)}\prod_{j=2}^K \frac{\Gamma(T_j - j\alpha)\Gamma(d_j - \alpha)}{\Gamma(T_j - 1 - (j-1)\alpha)\Gamma(1-\alpha)}
-	\end{equation*}
-	\begin{itemize}
-		\item $K$ = \#vertices
-		\item $n$ = \#edges
-		\item $d_j$ = degree of vertex $j$
+		\item $T$ = final time
 		\item $T_j$ = arrival time of vertex $j$
 	\end{itemize}
 \end{frame}
@@ -777,18 +636,11 @@
 		\begin{tabular}{ll}
 			\textbf{Observation} & \textbf{Unobserved variables} \\
 			\hline
-			Entire history & $\alpha,\phi,\bfPsi$ \\
-			Degrees in arrival order & $\alpha,\phi,\bfPsi, \bfT$ \\
-			Snapshot & $\alpha,\phi,\bfPsi,\bfT,\sigma$
+			Entire history & Model variables \\
+			Degrees in arrival order & Model variables, arrival times \\
+			Snapshot & Model variables, arrival times, arrival order
 		\end{tabular}
 	\end{center}
-	\begin{itemize}
-		\item $\alpha$ = BTNL parameter $\in (-\infty, 1)$
-		\item $\phi$ = arrival distribution parameters
-		\item $\bfPsi$ = latent sociabilities
-		\item $\bfT$ = arrival times
-		\item $\sigma$ = arrival order
-	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -798,23 +650,14 @@
 			\textbf{Variable} & \textbf{Gibbs sampling scheme} \\
 			\Xhline{4\arrayrulewidth}
 			\rule{0pt}{3ex}
-			$\alpha$ & MCMC, e.g. slice sampling \\
+			Model variables & Analytic using Gibbs structure \\
 			\hline
 			\rule{0pt}{3ex}
-			$\phi$ & Depends on arrival dist. family $\Lambda_\phi$ \\
+			Arrival times & Update each arrival time separately \\
 			\hline
 			\rule{0pt}{3ex}
-			$\mathbf{\Psi}$ & $\Psi_j | \text{graph}, \mathbf{\Psi}_{\setminus j} \sim \text{Beta}(d_{j} - \alpha, \bar{d}_{j-1} - (j-1)\alpha)$ \\
-			& \quad where $\bar{d}_{j} = \sum_{i=1}^j d_{j}$ \\
-			& \quad can marginalise out $\bfPsi$ \\
-			\hline
-			\rule{0pt}{3ex}
-			$\mathbf{T}$ & Simple update for $T_j$, can't move past neighbours \\
-			\hline
-			\rule{0pt}{3ex}
-			$\sigma$ & Initialise in descending degree order \\
-			& \quad use M-H with adjacent swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$\\
-			& \quad fast to compute due to Gibbs structure
+			Arrival order & Initialise in descending degree order \\
+			& \quad use M-H with adjacent swap proposal 
 		\end{tabular}
 	\end{center}
 \end{frame}
@@ -851,10 +694,6 @@
 %	\end{itemize}
 %\end{frame}
 
-\begin{frame}
-	\frametitle{Point estimation}
-	If entire history observed,\textbf{maximum a posterior} (or \textbf{maximum likelihood}) estimates for $\alpha, \phi$ computable
-\end{frame}
 
 \section{Experiments}
 \begin{frame}
@@ -869,9 +708,8 @@
 \begin{frame}
 	\frametitle{Parameter recovery}
 	\begin{itemize}
-		\item Simulate 500 edges with fixed $\alpha$ 
-		\item Arrivals either $\PYP$ or $\Geom$
-		\item Observe final snapshot of the graph
+		\item Small graph
+		\item Need to learn model variables, arrival times and arrival order
 	\end{itemize}
 	\begin{table}[h]
 		%  \caption{Results of Gibbs sampling experiments on synthetic data $(\alpha^* = 0.75)$. The top four rows show results from each of four different BNTL models fit to a synthetic graph with 500 edges generated by the coupled $\PYP$ BNTL model; the bottom four rows show the same BNTL models fit to a synthetic graph with $\Geom(0.25)$-distributed interarrivals.}
@@ -902,32 +740,8 @@
 \begin{frame}
 	\frametitle{Scalability}
 	\begin{itemize}
-		\item Simulate with fixed $\alpha$ and $\Geom(\beta)$ arrivals
-	\end{itemize}
-	
-	\begin{table}[t]
-		\label{tab:ess:scale:n}
-		\vspace*{-0.25\baselineskip}
-		\begin{center}
-			%  \resizebox{0.6\textwidth}{!}{
-			\begin{tabular}{l  ll}
-				& $100$ edges &  $10000$ edges \\ 
-				\hline
-				$|\hat{\alpha} - \alpha^*|$ & 0.12 $\pm$ 0.01 &  0.01 $\pm$ 0.00 \\ 
-				
-				$|\hat{\beta} - \beta^*|$ &  0.02 $\pm$ 0.00  &    0.00 $\pm$ 0.00  \\ 
-				
-				Effective Sample Size &  0.90 $\pm$ 0.04  &   0.75 $\pm$ 0.08  \\  
-				
-				Runtime (s) &  21 $\pm$ 0   &  2267 $\pm$ 2  \\ 
-				
-			\end{tabular}
-			%}
-		\end{center}
-	\end{table}
-	\begin{itemize}
 		\item Runtime linear in \#edges
-		\item Most expensive Gibbs update is for $\bfT$
+		\item Most expensive Gibbs update is for arrival times
 	\end{itemize}
 \end{frame}
 
@@ -935,7 +749,6 @@
 	\frametitle{MLEs for SNAP datasets}
 	\begin{itemize}
 		\item SNAP datasets
-		\item Fit point estimates for $\alpha, \phi$
 		\item Fit: coupled $\PYP$, uncoupled $\PYP$ and $\Geom(\beta)$ arrivals
 	\end{itemize}
 \end{frame}
@@ -949,8 +762,8 @@
 			\item $\hat{\theta}, \hat{\alpha} = 18080, 0.25$
 			\item $\hat{\theta}, \hat{\alpha}, \hat{\tau} = -0.99, -2.54, 0.99$
 		\end{itemize}
-		\item Edge exchangeable models misspecified ($\eta > 2$)
-		\item Using $\Geom$ estimates $\eta$ well
+		\item Edge exchangeable models misspecified
+		\item Non-exchangeable BNTL provide better fit
 	\end{itemize}
 \end{frame}
 	
@@ -984,12 +797,20 @@
 	\frametitle{Conclusion}
 	\begin{itemize}
 		\item BNTL models are \textit{flexible}
-		\item BNTL models are \textit{tractable}
+		\item Inference was challenging due to non-exchangeability
+		\pause 
+		\item BNTL models are \textit{tractable} due to exchangeable substructure
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{References}
+	\frametitle{Thank you}
+	\begin{center}
+		\resizebox{!}{0.35\textwidth}{\includegraphics{fig/ben.jpg}}
+		\resizebox{!}{0.35\textwidth}{\includegraphics{fig/emile.jpg}}
+		\resizebox{!}{0.35\textwidth}{\includegraphics{fig/yw.png}}
+	\end{center}
+	\vfill
 	\tiny{\bibliographystyle{unsrt}
 	\bibliography{refs}}
 \end{frame}
