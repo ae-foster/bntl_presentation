@@ -66,6 +66,7 @@
 \newcommand{\widesim}[1][1.5]{
 	\mathrel{\scalebox{#1}[1]{$\sim$}}
 }
+\newcommand{\condind}{{\perp\!\!\!\perp}}
 
 \definecolor{darkgreenClj}{rgb}{0.25,.5,0.25}
 \definecolor{blueClj}{rgb}{0,0.33,0.66}
@@ -335,7 +336,7 @@
 	% \includegraphics[angle=90,origin=c,scale=0.37]{fig/bntl}
 	\begin{enumerate}
 		\item Generate arrival times $1=T_1< T_2 < T_3 < \dotsc$ in any way.
-		\item Generate ends of edges sequentially:
+		\item Conditioned on arrival times, generate ends of edges sequentially:
 	\end{enumerate}
 	\begin{center}
 	\makebox[\textwidth][c]{
@@ -513,6 +514,26 @@
 	\begin{center}
 		\resizebox{\textwidth}{!}{\input{fig/cons_exch}}
 	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Neutrality}
+	At each step $n+1$ not corresponding to an arrival time, sample end of edge from discrete distribution
+	$$
+		P_{n+1} = \bigg( \frac{d_{1,n}-\alpha}{n - K\alpha},\dotsc, \frac{d_{K,n}-\alpha}{n - K\alpha}  \bigg) \;.
+	$$
+
+	Equivalently (see paper and \cite{Bloem2017}), can sample from
+	$$
+		\tilde{P}_K = \big( \tilde{P}_{1,K},\dotsc,\tilde{P}_{K,K}   \big)
+	$$
+	% where
+	$$
+		\text{where } \qquad \frac{\tilde{P}_{j,K}}{\sum_{i=1}^j \tilde{P}_{i,K}} = \Psi_j \sim \text{Beta}(1-\alpha,T_j - 1 - (j-1)\alpha) \;.
+	$$
+	\vspace{0.25cm}
+	
+	$\Psi_i \condind \Psi_j$ for all $i\neq j$. These independent increments are called \emph{neutral-to-the-left} and yield a factorized joint probability.
 \end{frame}
 
 \begin{frame}
