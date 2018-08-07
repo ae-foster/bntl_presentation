@@ -105,7 +105,7 @@
 
 
 \begin{frame}
-	\frametitle{Models for sparse networks}
+	\frametitle{Models for networks}
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models6}
 \end{frame}
 
@@ -320,39 +320,39 @@
 % 	\includegraphics[angle=90,origin=c,scale=0.37]{fig/powerlaw}
 % \end{frame}
 
-\begin{frame}
-	\frametitle{Power law degree distribution}
-	\begin{center}
-		$p(d) \propto d^{-\eta}$, for $\eta > 1$
-		\begin{tikzpicture}
-			\begin{axis}[
-				ymode = log,
-				xmode = log,
-				axis lines = left,
-				xlabel = {Log-degree, $\log d$},
-				ylabel = {$\log p(d)$},
-				style = thick,
-				yticklabels = {,,}
-				% xticklabels = {,,}
-				% ymajorticks = false,
-				% xmajorticks = false
-			]
-				\addplot[color=orangeClj,domain=1:10000,style=ultra thick]{x^(-1.5)};
-				\addplot[color=blueClj,domain=1:10000,style=ultra thick]{x^(-2.5)};
-				\node[anchor=west] (pl1) at (axis cs:300,0.001){$\eta=1.5$};
-				\node[anchor=west] (pl2) at (axis cs:15,0.000001){$\eta=2.5$};
-			\end{axis}
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Sparsity and power law}
-	\begin{align*}
-	\textbf{Sublinear } \text{sparsity} & \quad \iff \quad  \eta \in (1,2) \\
-	\textbf{Linear } \text{sparsity} & \quad \iff \quad \eta > 2
-	\end{align*}
-\end{frame}
+%\begin{frame}
+%	\frametitle{Power law degree distribution}
+%	\begin{center}
+%		$p(d) \propto d^{-\eta}$, for $\eta > 1$
+%		\begin{tikzpicture}
+%			\begin{axis}[
+%				ymode = log,
+%				xmode = log,
+%				axis lines = left,
+%				xlabel = {Log-degree, $\log d$},
+%				ylabel = {$\log p(d)$},
+%				style = thick,
+%				yticklabels = {,,}
+%				% xticklabels = {,,}
+%				% ymajorticks = false,
+%				% xmajorticks = false
+%			]
+%				\addplot[color=orangeClj,domain=1:10000,style=ultra thick]{x^(-1.5)};
+%				\addplot[color=blueClj,domain=1:10000,style=ultra thick]{x^(-2.5)};
+%				\node[anchor=west] (pl1) at (axis cs:300,0.001){$\eta=1.5$};
+%				\node[anchor=west] (pl2) at (axis cs:15,0.000001){$\eta=2.5$};
+%			\end{axis}
+%		\end{tikzpicture}
+%	\end{center}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Sparsity and power law}
+%	\begin{align*}
+%	\textbf{Sublinear } \text{sparsity} & \quad \iff \quad  \eta \in (1,2) \\
+%	\textbf{Linear } \text{sparsity} & \quad \iff \quad \eta > 2
+%	\end{align*}
+%\end{frame}
 
 \begin{frame}
 	\frametitle{Empirical study: Ask Ubuntu}
@@ -423,11 +423,6 @@
 \begin{frame}
 	\frametitle{Models}
 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models6}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models7}
 \end{frame}
 
 \begin{frame}
@@ -628,19 +623,6 @@
 		\item $T$ = final time
 		\item $T_j$ = arrival time of vertex $j$
 	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Available data}
-	\begin{center}
-		\begin{tabular}{ll}
-			\textbf{Observation} & \textbf{Unobserved variables} \\
-			\hline
-			Entire history & Model variables \\
-			Degrees in arrival order & Model variables, arrival times \\
-			Snapshot & Model variables, arrival times, arrival order
-		\end{tabular}
-	\end{center}
 \end{frame}
 
 \begin{frame}
