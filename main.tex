@@ -104,9 +104,13 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}<6>
 	\frametitle{Models for networks}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models6}
+	\resizebox{\textwidth}{!}{
+		{
+			\input{fig/models}%
+		}
+	}
 \end{frame}
 
 \section{Background}
@@ -192,25 +196,6 @@
 	\end{center}
 \end{frame}
 
-% \begin{frame}
-% 	\frametitle{Temporal networks}
-% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet1}
-% \end{frame}
-
-% \begin{frame}
-% 	\frametitle{Temporal networks}
-% 	\includegraphics[angle=270,origin=c,scale=0.4]{fig/socialnet2}
-% \end{frame}
-
-% \begin{frame}
-% 	\frametitle{Temporal networks}
-% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet3}
-% \end{frame}
-
-% \begin{frame}
-% 	\frametitle{Temporal networks}
-% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/socialnet4}
-% \end{frame}
 
 % step function for edges and vertices graph
 \pgfplotstableread{
@@ -277,17 +262,6 @@
 	\end{center}
 \end{frame}
 
-% \begin{frame}
-% 	\frametitle{Edges and vertices}
-% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/edgevertex}
-% \end{frame}
-
-
-% \begin{frame}
-% 	\frametitle{Sparsity}
-% 	\includegraphics[angle=90,origin=c,scale=0.4]{fig/sparsity}
-% \end{frame}
-
 \begin{frame}
 	\frametitle{Sparsity}
 	\begin{center}
@@ -315,47 +289,9 @@
 	\end{center}
 \end{frame}
 
-% \begin{frame}
-% 	\frametitle{Power law degree distribution}
-% 	\includegraphics[angle=90,origin=c,scale=0.37]{fig/powerlaw}
-% \end{frame}
-
-%\begin{frame}
-%	\frametitle{Power law degree distribution}
-%	\begin{center}
-%		$p(d) \propto d^{-\eta}$, for $\eta > 1$
-%		\begin{tikzpicture}
-%			\begin{axis}[
-%				ymode = log,
-%				xmode = log,
-%				axis lines = left,
-%				xlabel = {Log-degree, $\log d$},
-%				ylabel = {$\log p(d)$},
-%				style = thick,
-%				yticklabels = {,,}
-%				% xticklabels = {,,}
-%				% ymajorticks = false,
-%				% xmajorticks = false
-%			]
-%				\addplot[color=orangeClj,domain=1:10000,style=ultra thick]{x^(-1.5)};
-%				\addplot[color=blueClj,domain=1:10000,style=ultra thick]{x^(-2.5)};
-%				\node[anchor=west] (pl1) at (axis cs:300,0.001){$\eta=1.5$};
-%				\node[anchor=west] (pl2) at (axis cs:15,0.000001){$\eta=2.5$};
-%			\end{axis}
-%		\end{tikzpicture}
-%	\end{center}
-%\end{frame}
-%
-%\begin{frame}
-%	\frametitle{Sparsity and power law}
-%	\begin{align*}
-%	\textbf{Sublinear } \text{sparsity} & \quad \iff \quad  \eta \in (1,2) \\
-%	\textbf{Linear } \text{sparsity} & \quad \iff \quad \eta > 2
-%	\end{align*}
-%\end{frame}
 
 \begin{frame}
-	\frametitle{Empirical study: Ask Ubuntu}
+	\frametitle{Empirical study: Ask Ubuntu \cite{snapnets}}
 	\begin{figure}[h]
 		\includegraphics[width=1.0\textwidth]{fig/n_askubuntu_arrival.pdf}
 	\end{figure}
@@ -364,23 +300,13 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Empirical study: UCI social network}
+	\frametitle{Empirical study: UCI social network \cite{snapnets}}
 	\begin{figure}[h]
 		\includegraphics[width=1.0\textwidth]{fig/n_CollegeMsg_arrival.pdf}
 	\end{figure}
 	% $\sigma=0.95228934$
 	% $\hat{\sigma} = 0.952$
 \end{frame}
-
-%\begin{frame}
-%	\frametitle{Ask Ubuntu degree distribution}
-%	\begin{figure}[h]
-%		\includegraphics[width=0.8\textwidth]{fig/nodes_degre_power_law_askubuntu.pdf}
-%	\end{figure}
-%	
-%	$\hat{\eta} = 2.14$ estimated using technique of \cite{clauset}
-%	
-%\end{frame}
 
 \begin{frame}
 	\frametitle{Exchangeable models}
@@ -391,38 +317,16 @@
 	has the same distribution as the original sequence.
 	
 	\vspace{20pt}
-	Exchangeable models lead to tractable inference (de Finetti).
+	Exchangeable models tend to lead to tractable inference.
 \end{frame}
 
-\begin{frame}
+\begin{frame}<1-5>
 	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models1}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models2}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models3}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models4}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models5}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Models}
-	\includegraphics[angle=90,origin=c,scale=0.4]{fig/models6}
+	\resizebox{\textwidth}{!}{
+		{
+			\input{fig/models}
+		}
+	}
 \end{frame}
 
 \begin{frame}
@@ -644,39 +548,6 @@
 	\end{center}
 \end{frame}
 
-%\begin{frame}
-%	\frametitle{Sampling $\bfPsi$}
-%	Beta prior on $\Psi_j$, plus Gibbs structure, give
-%	\begin{equation*}
-%	\Psi_j \mid \text{graph}, \bfPsi_{\setminus j} \sim \text{Beta}(d_{j} - \alpha, \bar{d}_{j-1} - (j-1)\alpha) \;,
-%	\end{equation*}
-%	\small{where $\bar{d}_j = \sum_{i=1}^j d_i$}
-%\end{frame}
-%
-%\begin{frame}
-%	\frametitle{Sampling $\alpha,\phi$}
-%	\begin{itemize}
-%		\item One-dimensional unnormalized density for $\alpha$
-%		\item For $\phi$ depends on arrival distribution family
-%	\end{itemize}
-%
-%\end{frame}
-%
-%\begin{frame}
-%	\frametitle{Sampling $\bfT$}
-%	\includegraphics[angle=90,origin=c,scale=0.4]{fig/tsampling}
-%\end{frame}
-%
-%\begin{frame}
-%	\frametitle{Sampling $\sigma$}\
-%
-%	\begin{itemize} 
-%	\item Initialise in descending degree order
-%	\item Use Metropolis-Hastings with adjacent swap proposal $\sigma_j \leftrightarrow \sigma_{j+1}$
-%	\end{itemize}
-%\end{frame}
-
-
 \section{Experiments}
 \begin{frame}
 	\frametitle{Experiments}
@@ -731,6 +602,9 @@
 \begin{frame}
 	\frametitle{MLEs for real data}
 	Ask Ubuntu
+	\begin{figure}[h]
+		\includegraphics[width=0.8\textwidth]{fig/n_askubuntu_arrival.pdf}
+	\end{figure}
 	\begin{itemize}
 		\item Edge exchangeable models misspecified
 		\item Non-exchangeable BNTL provide better fit
